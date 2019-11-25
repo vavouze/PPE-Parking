@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/accueil', function () {
+    return view('accueil');
+});
+
+Route::get('/connexion', function () {
+    return view('connexion');
+});
+Route::post('/login','loginController@login');
+
+Route::get('/deconnexion','deconnexionController@deconnexion');
