@@ -62,7 +62,7 @@ CREATE TABLE LIGUE(
    AdresseRue VARCHAR(50),
    CP VARCHAR(5),
    Ville VARCHAR(50),
-   CONSTRAINT PK_LIGUE PRIMARY KEY (IDAdmin)
+   CONSTRAINT PK_LIGUE PRIMARY KEY (NumLigue)
  )ENGINE=InnoDB;
 
 #------------------------------------------------------------
