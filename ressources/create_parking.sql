@@ -37,8 +37,8 @@ CREATE TABLE UTILISATEUR(
    Ville VARCHAR(50),
    Mail VARCHAR(50),
    Validation BOOLEAN,
-   NumPlace SMALLINT,
-   IdLigue VARCHAR(50) NOT NULL,
+   Etat BOOLEAN  NOT NULL,
+   IdLigue VARCHAR(8) NOT NULL,
    CONSTRAINT PK_UTILISATEUR PRIMARY KEY (IDpersonne)
 )ENGINE=InnoDB;
 
@@ -58,7 +58,7 @@ CREATE TABLE ADMIN(
 
 
 CREATE TABLE LIGUE(
-   NumLigue VARCHAR(50),
+   NumLigue VARCHAR(8),
    AdresseRue VARCHAR(50),
    CP VARCHAR(5),
    Ville VARCHAR(50),
@@ -84,7 +84,7 @@ CREATE TABLE RESERVATION(
    NumReservation VARCHAR(5),
    DateReservation DATE,
    DateExpiration DATE,
-   NumPlace SMALLINT NOT NULL,
+   NumPlace SMALLINT (3) NOT NULL,
    IDpersonne VARCHAR(30)  NOT NULL,
    CONSTRAINT PK_RESERVATION PRIMARY KEY (NumReservation)
 )ENGINE=InnoDB;
