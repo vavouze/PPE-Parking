@@ -1,0 +1,260 @@
+/* FEUILLE DE STYLES POUR TOUS LES STYLES DE L'APPLICATION
+(Remarque : à plusieurs reprises, l'attribut color:black est précisé bien qu'il
+ne soit pas utile ; ceci permet une validation du W3C sans avertissement.
+Idem pour background-color) */
+
+/* Style de base pour la page (couleur fond : ocre, couleur texte : noir) */
+.basePage
+{
+   background-color:#ffffff;
+   color:black;
+   font:15px Arial, Helvetica, sans-serif;
+}
+
+/* Style pour le titre (couleur du texte : rouge) */
+.head
+{
+   background-color:#4DB2E5;
+   color:#FFFFFF;
+   font:30px monospace;
+   text-align:center;
+}
+
+
+/* Style pour le texte de 2ème niveau du titre */
+
+
+/* Style pour le texte de la page d'accueil (couleur : bleu foncé avec mise en
+gras et en italique) */
+div.description
+{
+   background-color:#ffffff;
+   color:#000000;
+   font:15px Arial, Helvetica, sans-serif;
+   text-align: center;
+
+
+}
+
+/* Style pour le texte dans les différentes balises citées */
+td,tr
+{
+   font:11px Arial, Helvetica, sans-serif;
+}
+
+/* STYLES POUR LES MENUS */
+
+/* Style du tableau contenant les éléments de menu : fond bleu ciel, épaisseur
+1px, espacement de 3x entre la bordure gauche de chaque cellule et le texte et
+texte centré */
+table.tabMenu td
+{
+   background-color:#DDFDFF;
+   color:black;
+   border-bottom:1px solid #777777;
+   border-right:1px solid #777777;
+   border-left:1px solid #777777;
+   border-top:1px solid #777777;
+   padding-left:3px;
+   width:33%;
+   height:18px;
+   text-align:center;
+}
+
+/* Style pour les éléments du menu (mise en gras et italique) */
+.menu
+{
+   font:11px Georgia, "Times New Roman", Times, serif;
+   font-weight:bold;
+   font-style:italic;
+   text-align:left;
+}
+
+/* STYLES POUR LES TABLEAUX QUADRILLÉS */
+
+/* Style des tableaux avec quadrillage : épaisseur du quadrillage 1px,
+espacement de 3x entre la bordure gauche de chaque cellule et le texte */
+table.tabNonQuadrille td
+{
+   border-bottom:1px solid #777777;
+   border-right:1px solid #777777;
+   border-left:1px solid #777777;
+   border-top:1px #777777;
+   padding-left:3px;
+
+}
+
+/* Style pour la 1ère ligne d'en-tête des tableaux quadrillés : fond avec
+nuances de jaune et texte centré */
+tr.enTeteTabQuad
+{
+
+   height:21px;
+   text-align:center;
+   background-color: #2e2e2d;
+   color: white;
+
+}
+div.table-responsive
+{
+
+}
+
+/* Style pour les lignes (autres que la 1ère ligne d'en-tête) des tableaux
+quadrillés : fond écru et texte centré */
+tr.ligneTabQuad
+{
+   background-color:#FFFFE0;
+   text-align:center;
+   color:black;
+}
+
+/* STYLES POUR LES TABLEAUX NON QUADRILLÉS */
+
+/* Style des tableaux sans quadrillage : fond écru, épaisseur de la bordure
+1px */
+table.tabNonQuadrille
+{
+   background-color:#FFFFF0;
+   border-bottom:1px solid #777777;
+   border-right:1px solid #777777;
+   border-left:1px solid #777777;
+   border-top:1px #777777;
+   color:black;
+}
+
+/* Style pour la ligne d'en-tête des tableaux non quadrillés : fond avec
+nuances de jaune, texte centré et en gras et trait bas pour séparer l'en-tête du
+corps du tableau */
+tr.enTeteTabNonQuad td
+{
+   height:21px;
+   text-align:center;
+   font-weight:bold;
+   border-bottom:1px solid #777777;
+   border-top: :1px solid #777777;
+   background-color: #2e2e2d;
+   color: white;
+}
+
+/* Style pour les lignes (autres que la 1ère ligne d'en-tête) des tableaux non
+quadrillés : fond écru, hauteur plus importante, texte aligné à gauche et
+espacement de 3px entre la bordure gauche de chaque cellule et le texte */
+tr.ligneTabNonQuad td
+{
+   background-color:#FFFFE0;
+   height:28px;
+   text-align:left;
+   padding-left:3px;
+   color:black;
+}
+
+/* STYLE POUR LES MESSAGES D'ERREUR AFFICHÉS EN BAS DE PAGE (FOND : OCRE,
+COULEUR DU TEXTE : ROSE) */
+
+.msgErreur
+{
+   background-color:#FFDD88;
+   color:#FF00CC;
+   font-size:14px;
+}
+
+/* STYLES POUR LES ATTRIBUTIONS */
+
+/* Fond blanc */
+td.reserveSiLien
+{
+   background-color:#FFFFFF;
+   color:black;
+   border-radius: 5px;
+   height: 18px;
+}
+
+/* Fond parme */
+td.reserve
+{
+   background-color:#BCBEBF;
+   color:black;
+   height: 18px;
+}
+.navbar-default .navbar-collapse{
+
+}
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.Tableau span {
+   display:inline;
+   float:left;
+   border:1px solid #FF6600;
+   margin:0px;
+   padding:3px;
+  }
+.Tableau p {
+   clear:left;
+   margin:0px;
+   padding:0px;
+   height:100% !important; height:1em;
+  }
+.Tableau p.legende {font-weight:bold}
+.Tableau span.col1 {width:70px}
+.Tableau span.col2 {width:120px}
+.Tableau span.col3 {width:90px}
+
+#submit{
+   padding:5px 15px;
+   margin-top: 5px;
+    background:#555251;
+    color: #CEC3BF;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+}
+
+#submit:hover{
+   padding:5px 15px;
+   margin-top: 5px;
+    background:#ffffff;
+    color: #000000;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 20px;
+}
+
+
+
+ a.btn.btn-light{
+  border-radius: 20px;
+  color:#555251;
+}
+
+ a.btn.btn-light:hover{
+  border-radius: 20px;
+  color:#3F5EE1;
+
+}
+body > div.head {
+  padding-top:1rem;
+}
+
+body > div.head > p.sous_titre {
+  margin:0;
+  padding-bottom:1rem;
+}
+
+nav.navbar.navbar-inverse{
+  border-radius: 0px;
+}
+
+div.middle{
+  position:absolute;
+  left:42vw;
+}
+
+#internal-anchor{
+  color: white;
+}
