@@ -23,6 +23,11 @@ Insert Into ADMIN (IDAdmin,MotDePasse)
 Values
 ('ADMIN','$2y$10$J7TncI0McaNwxtRi6u9GeePqvQ1KGSki4K/RxDd/AEj3eOBUl0HO.');
 
+
+Insert Into LIGUE (NumLigue,AdresseRue,CP,Ville)
+Values
+('0001','8 rue de la compoterie','79885','Caen');
+
 Insert Into LISTEATTENTE (Rang,IDpersonne)
 Values
 (1,60),

@@ -38,6 +38,7 @@ CREATE TABLE UTILISATEUR(
    Mail VARCHAR(50),
    Validation BOOLEAN,
    NumPlace SMALLINT,
+   IdLigue VARCHAR(50) NOT NULL,
    CONSTRAINT PK_UTILISATEUR PRIMARY KEY (IDpersonne)
 )ENGINE=InnoDB;
 
@@ -52,8 +53,22 @@ CREATE TABLE ADMIN(
 )ENGINE=InnoDB;
 
 #------------------------------------------------------------
+# Table: LIGUE
+#------------------------------------------------------------
+
+
+CREATE TABLE LIGUE(
+   NumLigue VARCHAR(50) PRIMARY KEY,
+   AdresseRue VARCHAR(50),
+   CP VARCHAR(5),
+   Ville VARCHAR(50),
+   CONSTRAINT PK_LIGUE PRIMARY KEY (IDAdmin)
+ )ENGINE=InnoDB;
+
+#------------------------------------------------------------
 # Table: LISTEATTENTE
 #------------------------------------------------------------
+
 
 CREATE TABLE LISTEATTENTE(
    Rang int(4) NOT NULL,
