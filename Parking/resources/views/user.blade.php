@@ -6,7 +6,10 @@
 session_start();
 $valeur = session('id');
 
-echo "USER : $valeur ";
+
+  echo "Bienvenue : $valeur ";
+
+
 
 
 @endphp

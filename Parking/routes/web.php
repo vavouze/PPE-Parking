@@ -24,7 +24,11 @@ Route::get('/connexion', function () {
 });
 
 Route::get('/user', function () {
-    return view('user');
+    if (session('id') != NULL) {
+        return view('user');
+    } else {
+      return redirect('/');
+    }
 });
 
 Route::post('/login','loginController@login');

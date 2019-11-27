@@ -3,12 +3,13 @@
 <!-- TITRE ET MENUS -->
 <html lang="fr">
 <head >
-<title>Festival</title>
+<title>Parkin 2.1</title>
 <meta http-equiv="Content-Language" content="fr">
 <meta charset="utf-8">
 <link href="css/cssGeneral.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,7 +22,7 @@
 
 <!--  Tableau contenant le titre -->
    <div class=head>
-      <p class="titre">PARKING 2.0<br>
+      <p class="titre"> 🅿️ PARKING 2.1 (version améliorée de la 2.0) <br>
       </p>
       <p class="sous_titre"> Gestion des places</p>
    </div>
@@ -58,7 +59,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Maison des ligues</a>
+        <a class="navbar-brand" href="index.php">PARKING</a>
       </div>
 
       <!-- COLLAPSIBLE NAVBAR -->
@@ -76,7 +77,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id="internal-anchor"> H&eacute;bergement des groupes</a></li>
-        
+
         </ul>
       </div>
     </div>
