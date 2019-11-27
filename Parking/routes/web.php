@@ -22,6 +22,11 @@ Route::get('/accueil', function () {
 Route::get('/connexion', function () {
     return view('connexion');
 });
+
+Route::get('/user', function () {
+    return view('user');
+});
+
 Route::post('/login','loginController@login');
 
 Route::get('/deconnexion','deconnexionController@deconnexion');

@@ -15,7 +15,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="icon" type="image/png" href="./images\dolo.png" />
+<link rel="icon" type="image/png" href="./public\parking_logo.png" />
 </head>
 <body class="basePage">
 
@@ -76,7 +76,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id="internal-anchor"> H&eacute;bergement des groupes</a></li>
-          <img src="./images\mdl.jpg" width="60" height="60"  border="0" />
+        
         </ul>
       </div>
     </div>

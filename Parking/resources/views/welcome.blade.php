@@ -1,7 +1,7 @@
 @extends('accueil')
 @section('navbar')
 
-<?php
+@php
 
 
 session_start();
@@ -27,16 +27,10 @@ else
           - Consulter, réaliser ou modifier les attributions des chambres aux groupes dans les établissements.</p>
       </ul>
    </div>";
-  if($valeur=='ADMIN')
-   {
-     echo
-     '<FORM ACTION="listeAttente.php">
-       <center><INPUT TYPE="SUBMIT" VALUE="Établissement en liste d\'attente" id="submit"></center>
-     </FORM>';
-   }
+
 
 }
 
-?>
+@endphp
 
 @stop
