@@ -1,4 +1,8 @@
+@php
 
+$valeur = session('id');
+
+@endphp
 <!DOCTYPE html>
 <!-- TITRE ET MENUS -->
 <html lang="fr">
@@ -59,21 +63,30 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">PARKING</a>
+        <a class="navbar-brand" href="index.php">🏠 PARKING</a>
       </div>
 
       <!-- COLLAPSIBLE NAVBAR -->
       <div class="collapse navbar-collapse" id="alignment-example">
-
-      <!-- Links -->
         <ul class="nav navbar-nav">
+      @php
 
-          <li><a href="listeEtablissements.php">Gestion établissements des ligues</a></li>
-          <li><a href="consultationAttributions.php">Attributions chambres</a></li>
-          <?php
+      if ($valeur != NULL && $valeur != 'ADMIN') {
+        echo'
+
+
+
+
+
+            <li><a href="listeEtablissements.php">Gestion établissements des ligues</a></li>
+            <li><a href="consultationAttributions.php">Attributions chambres</a></li>';
+      }
+
+
+
                 echo"<li><a href='/deconnexion'>déconnexion</a></li>";
 
-            ?>
+            @endphp
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id="internal-anchor"> H&eacute;bergement des groupes</a></li>
