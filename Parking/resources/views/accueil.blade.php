@@ -71,20 +71,21 @@ $valeur = session('id');
         <ul class="nav navbar-nav">
       @php
 
-      if ($valeur != NULL && $valeur != 'ADMIN') {
-        echo'
+      if ($valeur != NULL) {
+        if ($valeur != NULL && $valeur ='ADMIN') {
+          echo'
+              <li><a href="listeEtablissements.php">Gestion établissements des ligues</a></li>
+              <li><a href="consultationAttributions.php">Attributions chambres</a></li>';
+          }
+        echo"<li><a href='/deconnexion'>déconnexion</a></li>";
 
-
-
-
-
-            <li><a href="listeEtablissements.php">Gestion établissements des ligues</a></li>
-            <li><a href="consultationAttributions.php">Attributions chambres</a></li>';
       }
+      dump($valeur);
 
 
 
-                echo"<li><a href='/deconnexion'>déconnexion</a></li>";
+
+
 
             @endphp
         </ul>
