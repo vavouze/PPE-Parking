@@ -7,7 +7,7 @@ $valeur = session('id');
 <!-- TITRE ET MENUS -->
 <html lang="fr">
 <head >
-<title>Parkin 2.1</title>
+<title>Parking 2.1</title>
 <meta http-equiv="Content-Language" content="fr">
 <meta charset="utf-8">
 <link href="css/cssGeneral.css" rel="stylesheet" type="text/css">
