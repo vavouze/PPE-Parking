@@ -6,7 +6,7 @@
 
 session_start();
 $valeur = session('id');
-dump($valeur);
+
 if (empty($valeur))
 {
     echo '<center><font color="red" size="4"><b>Vous devez vous connecter pour acceder à l\'application</center></font><br />

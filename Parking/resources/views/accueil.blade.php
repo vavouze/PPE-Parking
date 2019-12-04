@@ -72,15 +72,20 @@ $valeur = session('id');
       @php
 
       if ($valeur != NULL) {
-        if ($valeur != NULL && $valeur ='ADMIN') {
+        if ($valeur === 'ADMIN') {
           echo'
               <li><a href="listeEtablissements.php">Gestion établissements des ligues</a></li>
               <li><a href="consultationAttributions.php">Attributions chambres</a></li>';
+          }elseif ($valeur != 'ADMIN') {
+            echo '
+              <li><a href="/user">Historique</a></li>
+              <li><a href="/changeMDP">Changer votre MDP</a></li>
+              <li><a href="/reservation">Réserver</a></li>';
           }
-        echo"<li><a href='/deconnexion'>déconnexion</a></li>";
+        echo"<li><a href='/deconnexion'>Déconnexion</a></li>";
 
       }
-      dump($valeur);
+
 
 
 
@@ -90,7 +95,7 @@ $valeur = session('id');
             @endphp
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a id="internal-anchor"> H&eacute;bergement des groupes</a></li>
+          <li><a id="internal-anchor"> Gestion du Personnel </a></li>
 
         </ul>
       </div>
