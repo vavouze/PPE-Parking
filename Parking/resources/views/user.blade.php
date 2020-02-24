@@ -19,18 +19,25 @@ $valeur = session('id');
                     </label>
                 </div>
                 <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2 py-5 px-3 ">
-                        @php
-                        if (isset($numPlace[0]->NumPlace))
-                        echo "votre numéro de place est : ".$numPlace[0]->NumPlace." <br />";
-                        else
-                        echo "veuillez faire une demande de place";@endphp
+                    <label class="block text-gray-700 text-sm font-bold mb-2 py+5 px-3 ">
+
+                        @if (isset($numPlace[0]->NumPlace))
+                            <p>votre numéro de place est : $numPlace[0]->NumPlace </p> <br />
+                        @else
+                            <p>veuillez faire une demande de Place </p> <br />
+                            <div class="py-5">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                    Button   
+                                </button>
+                            </div>
+                        @endif
                     </label>
                 </div>
 
             </form>
         </div>
     </div>
+</div>
 
 
 @stop
