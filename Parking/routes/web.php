@@ -19,6 +19,12 @@ Route::get('/accueil', function () {
     return view('accueil');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
+
+
 Route::get('/connexion', function () {
     return view('connexion');
 });
@@ -34,3 +40,5 @@ Route::get('/user', function () {
 Route::post('/login','loginController@login');
 
 Route::get('/deconnexion','deconnexionController@deconnexion');
+
+Route::get('/user','PlaceController@numPlace');
