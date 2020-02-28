@@ -39,7 +39,8 @@ class loginController extends BaseController
       }
       if (password_verify($_POST['motdepasse'], $hash)){
         session(['id' => $id]);
-        return redirect($url);
+        return redirect($url)
+            ->with('name',);
       }
       /*elseif (password_verify($_POST['motdepasse'], $hash1)){
         session(['id' => $checkLogin1[0]->id]);
