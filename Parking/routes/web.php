@@ -12,6 +12,8 @@
 */
 
 Route::get('/', function () {
+
+
     return view('welcome');
 });
 
@@ -21,6 +23,11 @@ Route::get('/accueil', function () {
 
 Route::get('/test', function () {
     return view('test');
+});
+
+
+Route::get('/ListeAttente', function () {
+    return view('ListeAttente');
 });
 
 
@@ -42,3 +49,7 @@ Route::post('/login','loginController@login');
 Route::get('/deconnexion','deconnexionController@deconnexion');
 
 Route::get('/user','PlaceController@numPlace');
+
+Route::post('/reservation', 'ReservationController@home');
+
+Route::post('/Cancelreservation', 'CancelReservationController@CancelReservation');
