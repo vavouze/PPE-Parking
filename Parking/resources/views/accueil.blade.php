@@ -21,11 +21,6 @@ $valeur = session('id');
 <link rel="stylesheet" href=" {{ mix('css/main.css')}}">
 <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 
-
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 <!-- Latest compiled JavaScript -->
 
 <link rel="icon" type="image/png" href="./public\parking_logo.png" />

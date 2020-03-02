@@ -42,3 +42,9 @@ Route::post('/login','loginController@login');
 Route::get('/deconnexion','deconnexionController@deconnexion');
 
 Route::get('/user','PlaceController@numPlace');
+
+Route::get('s', 'UserController@showUser');
+
+Route::get('/infouser', function () {
+    return view('infoutilisateur');
+});
