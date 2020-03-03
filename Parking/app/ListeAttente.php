@@ -4,13 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class utilisateur extends Model
+class ListeAttente extends Model
 {
-
-
-
-    public $timestamps = false;
-
     //
 
     /**
@@ -18,23 +13,14 @@ class utilisateur extends Model
      *
      * @var string
      */
-    protected $table = 'utilisateur';
-
+    protected $table = 'listeattente';
 
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'IDpersonne';
-
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
-
+    protected $primaryKey = 'Rang';
 
     /**
      * The "type" of the auto-incrementing ID.
@@ -42,5 +28,10 @@ class utilisateur extends Model
      * @var string
      */
     protected $keyType = 'int';
-
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }
