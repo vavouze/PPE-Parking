@@ -13,7 +13,6 @@
 
 Route::get('/', function () {
 
-
     return view('welcome');
 });
 
@@ -32,19 +31,11 @@ Route::get('/ListeAttente', function () {
 });
 
 
-
-
 Route::get('/connexion', function () {
     return view('connexion');
 });
 
-Route::get('/user', function () {
-    if (session('id') != NULL) {
-        return view('user');
-    } else {
-      return redirect('/');
-    }
-});
+
 
 Route::post('/login','loginController@login');
 

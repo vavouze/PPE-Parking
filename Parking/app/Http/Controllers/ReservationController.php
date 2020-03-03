@@ -11,7 +11,7 @@ use DB;
 
 class ReservationController extends BaseController
 {
-    public function home(Request $req) {
+    public function Reservation(Request $req) {
 
 
         $Date_debut= $req->input('date_deb');
@@ -40,13 +40,14 @@ class ReservationController extends BaseController
         else{
 
             DB::table('reservation')->insert(
-                ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10','NumPlace'=> $randomPlace , 'IDpersonne'=> $id]
+                ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10','NumPlace'=> $randomPlace , 'IDpersonne'=> $id,'FIN(o/n)' => 'n']
             );
 
             DB::table('place')
                 ->where('NumPlace', $randomPlace)
                 ->update(['etat' => 1]);
-            return view('user');
+
+            return redirect('/user');
 
         }
 

@@ -6,15 +6,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class utilisateur extends Model
 {
-    //the table associate
 
+
+
+    //
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
     protected $table = 'utilisateur';
 
-    //the primary key of the table
+
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
     protected $primaryKey = 'IDpersonne';
 
-    //Indicate if the primary Key is a auto-incrementing
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
     public $incrementing = false;
+
 
     public $timestamps = false;
 
@@ -22,4 +40,13 @@ class utilisateur extends Model
     {
         return $this->hasOne('App\listeattente', 'IDpersonne');
     }
+
+    /**
+     * The "type" of the auto-incrementing ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'int';
+
+
 }
