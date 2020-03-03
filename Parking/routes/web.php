@@ -21,9 +21,7 @@ Route::get('/accueil', function () {
     return view('accueil');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
+
 
 
 Route::get('/ListeAttente', function () {
@@ -50,6 +48,10 @@ Route::get('/deconnexion','deconnexionController@deconnexion');
 
 Route::get('/user','PlaceController@numPlace');
 
-Route::post('/reservation', 'ReservationController@home');
+Route::get('/ListeAttente','ListeAttenteController@InsertListeAttente');
+
+Route::post('/reservation', 'PlaceController@Reservation');
 
 Route::post('/Cancelreservation', 'CancelReservationController@CancelReservation');
+
+Route::get('/','ListeAttenteController@CheckPlace');
