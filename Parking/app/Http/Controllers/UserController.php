@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use App\utilisateur;
 use DB;
 
 
@@ -15,7 +16,7 @@ class UserController extends BaseController
     {
 
 
-           $data = DB::table('utilisateur')->get();
+           $data = utilisateur::all();
 
 
 
@@ -26,8 +27,7 @@ class UserController extends BaseController
     public function showinfo(Request $req)
     {
         $IDu=$_GET['id_u'];
-        $info = DB::table('utilisateur')
-                  ->where(['IDpersonne' => $IDu])
+        $info = utilisateur::where(['IDpersonne' => $IDu])
                   ->get();
 
                   return view('##')
