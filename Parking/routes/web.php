@@ -45,6 +45,8 @@ Route::get('/user','PlaceController@numPlace');
 
 Route::get('s', 'UserController@showUser');
 
-Route::get('/infouser', function () {
+Route::get('infoperso/{d}', 'UserController@showInfo' );
+
+Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');
 });

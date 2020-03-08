@@ -7,7 +7,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use App\utilisateur;
-use DB;
+
 
 
 class UserController extends BaseController
@@ -20,17 +20,22 @@ class UserController extends BaseController
 
 
 
-       return view('infoutilisateur ')
+       return view('allUtilisateur ')
         ->with('data', $data);
     }
 
-    public function showinfo(Request $req)
+    public function showInfo(Request $req, $d)
     {
-        $IDu=$_GET['id_u'];
-        $info = utilisateur::where(['IDpersonne' => $IDu])
+
+        $info = utilisateur::where(['IDpersonne' => $d])
                   ->get();
 
-                  return view('##')
-                            ->with('info');
+                  return view('infoutilisateur')
+                            ->with('info', $info);
+    }
+
+    public function destroyinfo( Request $req)
+    {
+      utilisateur::find()->delete();
     }
 }
