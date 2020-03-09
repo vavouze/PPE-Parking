@@ -36,6 +36,8 @@ $valeur = session('id');
                   <img src="/img/favicon.png" class="h-8 w-8 opacity-25  cursor-pointer mb-10" />
                   <img src="" class="h-8 w-8 opacity-25  cursor-pointer mb-10" />
                   <img src="" class="h-8 w-8 opacity-25  cursor-pointer" />
+                @else
+                  <a href="/s"><img src="/img/utilisateurs.png"class="h-8 w-8  cursor-pointer mb-10"></a>
                 @endif
             @endif
         </nav>
@@ -43,6 +45,6 @@ $valeur = session('id');
             <div class="w-full p-6">
               @yield('nav')
             </div>
-            
+
         </div>
     </div>
