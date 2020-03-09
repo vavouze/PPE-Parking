@@ -64,7 +64,7 @@ $valeur = session('id');
 
                             @php
                             $originalDate = $numPlace[0]->DateReservation;
-                            $newDate = date("d-F-Y", strtotime($originalDate));
+                            $newDate = date("d F Y", strtotime($originalDate));
 
                             echo "$newDate";@endphp
 
@@ -103,32 +103,38 @@ $valeur = session('id');
 
 @endif
 
+    @if(count($ListePlace)>0)
+        <div class="w-1/2 mx-auto">
+            <h1 class="font-hairline mb-6 text-center">Vos dernières réservations</h1>
+            <div class="bg-white shadow-md rounded my-6 rounded-lg  border-t-8 border-blue-200">
+                <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+                    <thead>
+                    <tr>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Numéro Place</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Début</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Fin</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-    <div class="w-1/2 mx-auto">
-        <h1 class="font-hairline mb-6 text-center">Vos dernières réservations</h1>
-        <div class="bg-white shadow-md rounded my-6 rounded-lg  border-t-8 border-blue-200">
-            <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-                <thead>
-                <tr>
-                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Numéro Place</th>
-                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Début</th>
-                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Fin</th>
-                </tr>
-                </thead>
-                <tbody>
+                    @foreach($ListePlace as $key)
 
-                @foreach($ListePlace as $key)
+                        @php
+                            $newDateR = date("d F Y", strtotime($key->DateReservation));
+                            $newDateExp = date("d F Y", strtotime($key->DateExpiration));
+                        @endphp
 
-                <tr class="hover:bg-grey-lighter">
-                    <td class="py-4 px-6 border-b border-grey-light">Place : {{$key->NumPlace}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$key->DateReservation}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$key->DateExpiration}}</td>
-                </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    <tr class="hover:bg-grey-lighter">
+                        <td class="py-4 px-6 border-b border-grey-light">Place : {{$key->NumPlace}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$newDateR}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$newDateExp}}</td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    @endif
 </div>
 
 
@@ -162,7 +168,7 @@ $valeur = session('id');
                     </div>
                     <div class="flex items-center justify-center">
 
-                        <input type="date" class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="date_deb" name='date_deb'>
+                        <input type="date" value="<?php echo date("Y-m-d"); ?>" class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="date_deb" name='date_deb'>
                     </div>
                 </div>
                 <!--Footer-->

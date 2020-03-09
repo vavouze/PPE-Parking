@@ -26,6 +26,7 @@ Route::get('/test', function () {
 
 
 
+
 Route::get('/ListeAttente', function () {
     return view('ListeAttente');
 });
@@ -36,12 +37,20 @@ Route::get('/connexion', function () {
 });
 
 
+Route::get('/subscription', function () {
+    return view('subscription');
+});
+
+
+
 
 Route::post('/login','loginController@login');
 
+Route::post('/inscription','RegisterController@register');
+
 Route::get('/deconnexion','deconnexionController@deconnexion');
 
-Route::get('/user','PlaceController@numPlace');
+Route::get('/user','PlaceController@numPlace')->middleware('LogAuth');
 
 
 Route::get('s', 'UserController@showUser');

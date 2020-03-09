@@ -68,7 +68,7 @@ class ListeAttenteController extends BaseController
                 $randomind = array_rand($arr);
                 $randomPlace = $arr[$randomind]->Numplace;
                 DB::table('reservation')->insert(
-                    ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10', 'NumPlace' => $randomPlace, 'IDpersonne' => $id, 'FIN(o/n)' => 'n']
+                    ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10', 'NumPlace' => $randomPlace, 'IDpersonne' => $id, 'Fin' => 'n']
                 );
 
                 DB::table('place')

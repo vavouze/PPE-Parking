@@ -48,7 +48,7 @@ class CancelReservationController extends BaseController
 
             DB::table('reservation')
                 ->where(['IDpersonne'=>$id])
-                ->update(['FIN(o/n)' => 'o']);
+                ->update(['Fin' => 'o']);
 
             DB::table('place')
                 ->where('NumPlace', $arr[0]->NumPlace)

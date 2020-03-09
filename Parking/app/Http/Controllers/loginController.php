@@ -34,7 +34,10 @@ class loginController extends BaseController
         }
         else
         {
-          die("Erreur!");
+            $messageLog = "Les données saisies sont invalides";
+
+            return view('welcome')
+              ->with('message',$messageLog);
         }
       }
       if (password_verify($_POST['motdepasse'], $hash)){
