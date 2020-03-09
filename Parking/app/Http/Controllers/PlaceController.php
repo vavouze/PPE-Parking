@@ -10,7 +10,7 @@ use App\utilisateur;
 use App\Reservation;
 use App\ListeAttente;
 use App\Place;
-use DB;
+
 
 class PlaceController extends BaseController
 {
@@ -60,6 +60,7 @@ class PlaceController extends BaseController
     public function Reservation(Request $req) {
 
         $Date_debut= $req->input('date_deb');
+        $Date_Fin = date('Y-m-d ', strtotime($Date_debut . ' +7 day'));
         $id = $req->session()->get('id');
 
         $PlaceDisp= Place::where('Etat',0)->get();
@@ -86,22 +87,21 @@ class PlaceController extends BaseController
             $randomPlace = $arr[$randomind]->NumPlace;
 
 
-            /*DB::table('reservation')->insert(
-                ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10','NumPlace'=> $randomPlace , 'IDpersonne'=> $id,'FIN(o/n)' => 'n']
-            );*/
+
+
 
             $newReservation = new Reservation();
 
             $newReservation->DateReservation = $Date_debut;
-            $newReservation->DateExpiration = '2010-10-10';
+            $newReservation->DateExpiration = $Date_Fin;
             $newReservation->NumPlace = $randomPlace;
             $newReservation->IDpersonne = $id;
             $newReservation->Fin = 'n';
 
             $newReservation->save();
 
-            DB::table('place')
-                ->where('NumPlace', $randomPlace)
+
+            Place::where('NumPlace',$randomPlace)
                 ->update(['etat' => 1]);
 
             return redirect('/user');

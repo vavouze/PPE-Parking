@@ -34,7 +34,7 @@ class utilisateur extends Model
     public $incrementing = false;
 
 
-    public $timestamps = false;
+    
 
     public function listeattente()
     {
@@ -48,5 +48,13 @@ class utilisateur extends Model
      */
     protected $keyType = 'int';
 
+
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 
 }
