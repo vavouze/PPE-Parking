@@ -12,8 +12,6 @@
 */
 
 Route::get('/', function () {
-
-
     return view('welcome');
 });
 
@@ -22,31 +20,24 @@ Route::get('/accueil', function () {
 });
 
 
-
-
-Route::get('/ListeAttente', function () {
-    return view('ListeAttente');
-});
-
-
-
 Route::get('/connexion', function () {
     return view('connexion');
 });
 
-Route::get('/user', function () {
-    if (session('id') != NULL) {
-        return view('user');
-    } else {
-      return redirect('/');
-    }
+
+Route::get('/subscription', function () {
+    return view('subscription');
 });
+
+
 
 Route::post('/login','loginController@login');
 
+Route::post('/inscription','RegisterController@register');
+
 Route::get('/deconnexion','deconnexionController@deconnexion');
 
-Route::get('/user','PlaceController@numPlace');
+Route::get('/user','PlaceController@numPlace')->middleware('LogAuth');
 
 Route::get('/ListeAttente','ListeAttenteController@InsertListeAttente');
 

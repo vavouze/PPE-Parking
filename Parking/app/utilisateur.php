@@ -37,4 +37,11 @@ class utilisateur extends Model
      * @var string
      */
     protected $keyType = 'int';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }
