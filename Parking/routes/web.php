@@ -23,8 +23,6 @@ Route::get('/test', function () {
     return view('test');
 });
 
-
-
 Route::get('/connexion', function () {
     return view('connexion');
 });
@@ -45,7 +43,11 @@ Route::get('/user','PlaceController@numPlace');
 
 Route::get('s', 'UserController@showUser');
 
-Route::get('infoperso/{d}', 'UserController@showInfo' );
+Route::post('/modif/{id}', 'UserController@modifyInfo');
+
+Route::get('infoperso/{id}', 'UserController@showInfo' );
+
+Route::get('supprimer/{id}', 'UserController@destroyinfo' );
 
 Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');

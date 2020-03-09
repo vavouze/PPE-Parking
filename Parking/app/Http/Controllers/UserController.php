@@ -15,27 +15,41 @@ class UserController extends BaseController
     public function showUser(Request $req)
     {
 
-
            $data = utilisateur::all();
 
 
 
-       return view('allUtilisateur ')
+       return view('allUtilisateur')
         ->with('data', $data);
     }
 
-    public function showInfo(Request $req, $d)
+    public function showInfo(Request $req, $id)
     {
 
-        $info = utilisateur::where(['IDpersonne' => $d])
+        $info = utilisateur::where(['IDpersonne' => $id])
                   ->get();
 
                   return view('infoutilisateur')
                             ->with('info', $info);
     }
 
-    public function destroyinfo( Request $req)
+    public function modifyInfo(Request $req, $id)
     {
-      utilisateur::find()->delete();
+      $info = $req->input();
+      dd($id);
+
+    }
+    public function destroyinfo( Request $req, $id)
+    {
+      $info = utilisateur::where(['IDpersonne' => $id])
+                ->get();
+      $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été supprimé";
+
+      utilisateur::find($id)->delete();
+
+      $data = utilisateur::all();
+      return view('allUtilisateur')
+       ->with('data', $data)
+       ->with('message', $message);
     }
 }

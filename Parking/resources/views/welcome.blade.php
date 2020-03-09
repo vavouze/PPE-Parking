@@ -33,7 +33,7 @@ $valeur = session('id');
       </form>
     </div>
   </div>
-
+</div>
 
 @else
 

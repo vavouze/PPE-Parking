@@ -26,14 +26,16 @@ $valeur = session('id');
               <td class="py-4 px-6 border-b border-grey-light"> {{$d->Tel ?? ''}}</td>
               @php  $lien = $d->IDpersonne;  @endphp
               <td class="py-4 px-6 border-b border-grey-light"> <a href="{{url('infoperso', $d->IDpersonne)}}" class="text-grey-lighter font-bold py-1 px-3 rounded bg-green hover:bg-green-dark">Modifier</a></td>
-              <td class="py-4 px-6 border-b border-grey-light"> <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="supprimer()" >Supprimer</button></td>
+              <td class="py-4 px-6 border-b border-grey-light"> <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('supprimer', $d->IDpersonne)}}'" >Supprimer</button></td>
           </tr>
           @endforeach
         </tbody>
     </table>
   </div>
+  <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
 </div>
-
+@php
+/*
 <div class="modal-supprimer opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
   <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
     <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
@@ -59,7 +61,7 @@ $valeur = session('id');
           </div>
         </div>
   <div class="flex justify-end pt-2">
-          <button class="px-4 bg-transparent p-3 rounded-lg text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" onclick="location.href='#'">Supprimer</button>
+          <button class="px-4 bg-transparent p-3 rounded-lg text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" onclick="location.href='{{url('infoperso', $d->IDpersonne)}}'">Supprimer</button>
           <button class="modal-close px-4 bg-blue-500 p-3 rounded-lg text-white hover:bg-blue-400" onclick="location.href='/s'">Annuler</button>
         </div>
 
@@ -78,4 +80,6 @@ function supprimer(){
   body.classList.toggle('modal-active')
 }
 </script>
+*/
+@endphp
 @stop
