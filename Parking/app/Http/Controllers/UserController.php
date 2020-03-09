@@ -37,6 +37,7 @@ class UserController extends BaseController
     {
       $info = $req->input();
       dd($id);
+      
 
     }
     public function destroyinfo( Request $req, $id)
