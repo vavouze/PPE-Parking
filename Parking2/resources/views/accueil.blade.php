@@ -48,8 +48,5 @@ $valeur = session('id');
             <div class="w-full p-6">
               @yield('nav')
             </div>
-            <div class="bg-white shadow-lg w-1/4">
-
-            </div>
         </div>
     </div>

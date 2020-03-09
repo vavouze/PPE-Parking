@@ -11,9 +11,10 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-});
+})-> name('login');
 
 Route::get('/accueil', function () {
     return view('accueil');
@@ -36,6 +37,12 @@ Route::get('/user', function () {
       return redirect('/');
     }
 });
+
+Route::get('/place', 'listeplaceController@place')-> middleware('adminAuth');
+
+Route::get('/deletePlace', 'listeplaceController@delete')-> middleware('adminAuth');;
+
+Route::get('/showPlace', 'listeplaceController@show')-> middleware('adminAuth');;
 
 Route::post('/login','loginController@login');
 
