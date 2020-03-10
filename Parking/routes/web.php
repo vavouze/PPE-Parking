@@ -43,7 +43,7 @@ Route::get('/user','PlaceController@numPlace');
 
 Route::get('s', 'UserController@showUser');
 
-Route::post('/modif/{id}', 'UserController@modifyInfo');
+Route::post('/modif/{id}', 'UserController@modifyInfoPerso');
 
 Route::get('infoperso/{id}', 'UserController@showInfo' );
 

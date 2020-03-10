@@ -7,8 +7,8 @@ session_start();
 $valeur = session('id');
 
 @endphp
-
 <div class="w-2/3 mx-auto">
+  <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
   <div class="bg-white shadow-md rounded my-6">
     <table class="text-left w-full border-collapse">
         <thead>
@@ -32,8 +32,8 @@ $valeur = session('id');
         </tbody>
     </table>
   </div>
-  <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
 </div>
+
 @php
 /*
 <div class="modal-supprimer opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">

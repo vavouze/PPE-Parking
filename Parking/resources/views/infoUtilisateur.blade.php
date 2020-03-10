@@ -7,8 +7,11 @@ session_start();
 $valeur = session('id');
 
 @endphp
+@if(empty($info[0]->IDpersonne))
+<p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
+@else
 <div class="container mx-auto h-full flex justify-center items-center">
-  <div class="w-1/3">
+  <div class="w-1/3 mx-auto">
     <h1 class="font-hairline mb-6 text-center">Modification des informations personnelles</h1>
     <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
       <form  action="/modif/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
@@ -44,6 +47,14 @@ $valeur = session('id');
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+              E-mail
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->Mail ?? ''}}" id="grid-city" name="mail" type="text" placeholder="3 rue de Paris">
+          </div>
+        </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
               Adresse
             </label>
             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->AdRue ?? ''}}" id="grid-city" name="adrue" type="text" placeholder="3 rue de Paris">
@@ -72,7 +83,7 @@ $valeur = session('id');
 
 
   <div class="w-1/3 mx-auto">
-    <h1 class="font-hairline mb-6 text-center">Modification des informations personnelles</h1>
+    <h1 class="font-hairline mb-6 text-center">Modification du mot de passe</h1>
     <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
       <form  action="/modif/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
         @csrf
@@ -84,6 +95,14 @@ $valeur = session('id');
             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="mdp" type="password">
           </div>
         </div>
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+              Confirmation du mot de passe
+            </label>
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="Cmdp" type="password">
+          </div>
+        </div>
         <div class="flex items-center justify-center">
           <input type='submit' value='modifier' name='modifer' id='submit' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         </div>
@@ -91,6 +110,7 @@ $valeur = session('id');
     </div>
   </div>
 </div>
+@endif
 <script>
 function supprimer(){
   const body = document.querySelector('body')

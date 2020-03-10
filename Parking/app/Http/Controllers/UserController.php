@@ -29,15 +29,41 @@ class UserController extends BaseController
         $info = utilisateur::where(['IDpersonne' => $id])
                   ->get();
 
-                  return view('infoutilisateur')
-                            ->with('info', $info);
+        if(isset($info[0]->IDpersonne))
+        {
+            return view('infoutilisateur')
+                      ->with('info', $info);
+        }
+        else
+        {
+          $message="Cet utilisateur n'existe pas !";
+          return view('infoutilisateur')
+                    ->with('message', $message);
+        }
+
     }
 
-    public function modifyInfo(Request $req, $id)
+    public function modifyInfoPerso(Request $req, $id)
     {
       $info = $req->input();
-      dd($id);
       
+      utilisateur::where('IDpersonne', $id)
+                ->update(['Nom'=> $info['nom'],
+                          'Prenom'=> $info['prenom'],
+                          'IDpersonne'=> $info['username'],
+                          'Tel'=> $info['telephone'],
+                          'AdRue'=> $info['adrue'],
+                          'CP'=> $info['cp'],
+                          'Ville'=> $info['ville'],
+                          'Mail'=> $info['mail']
+                          ]);
+          $data = utilisateur::all();
+          $message ="l'utilisateur ".$info['nom']." ".$info['prenom']." à bien été modifié !";
+        return view('allUtilisateur')
+          ->with('message', $message)
+          ->with('data', $data);
+
+
 
     }
     public function destroyinfo( Request $req, $id)
