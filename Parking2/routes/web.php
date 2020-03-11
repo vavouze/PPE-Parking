@@ -14,17 +14,11 @@
 
 Route::get('/', function () {
     return view('welcome');
-})-> name('login');
+});
 
 Route::get('/accueil', function () {
     return view('accueil');
 });
-
-Route::get('/test', function () {
-    return view('test');
-});
-
-
 
 Route::get('/connexion', function () {
     return view('connexion');
@@ -37,6 +31,12 @@ Route::get('/user', function () {
       return redirect('/');
     }
 });
+
+Route::get('/ajoutPlace', function(){
+  return view('ajoutPlace');
+})-> middleware('adminAuth');
+
+Route::post('/traitementajoutPlace', 'listeplaceController@ajoutPlace')-> middleware('adminAuth');
 
 Route::get('/place', 'listeplaceController@place')-> middleware('adminAuth');
 

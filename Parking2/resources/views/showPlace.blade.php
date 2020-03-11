@@ -14,11 +14,6 @@ echo "USER : $valeur";
     echo "NumPlace :", $place ->NumPlace, " ";
     echo "Etat :", $place ->Etat;
     ?>
-    @if($reservations == NULL)
-
-    @php echo "Il n'y a aucune réservation pour cette place"; @endphp
-
-    @else
     <table  class="text-left w-full border-collapse">
       <thead>
         <tr>
@@ -43,5 +38,4 @@ echo "USER : $valeur";
      </table>
   </div>
 </div>
-@endif
 @stop

@@ -41,20 +41,8 @@ class listeplaceController extends Controller
       Place::where('NumPlace', $numP)
              ->delete();
 
-      $places = Place::all();
 
-
-
-      /*foreach($places as $place)
-        {
-          if ($place->Etat == 0)
-            $place->Etat = 'libre';
-          else
-            $place->Etat = 'occupée';
-        }*/
-
-
-        redirect('place');
+      return redirect('place');
     }
 
     public function show()
@@ -83,5 +71,36 @@ class listeplaceController extends Controller
          return view('showPlace')
           ->with('place', $place)
           ->with('reservations', $reservations);
+    }
+
+    public function ajoutPlace(Request $req)
+    {
+      $numPlace = $req->input('NumPlace');
+      $etat = $req->input('etat');
+      $places = Place::all();
+
+      if($numPlace == NULL || $etat == NULL)
+      {
+        $message = 'Tous les champs sont requis';
+        return view('ajoutPlace')
+          ->with('message', $message);
+      }
+
+      foreach($places as $place)
+      {
+        if($place->NumPlace == $numPlace)
+        {
+          $message = 'La place numero '.$place->NumPlace.' existe déjà';
+          return view('ajoutPlace')
+            ->with('message', $message);
+          }
+
+      }
+
+      Place::insert(
+        ['numPlace'=>$numPlace , 'Etat'=>$etat]
+        );
+
+      return redirect('place');
     }
 }

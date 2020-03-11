@@ -6,6 +6,7 @@ $valeur = session('id');
 echo "USER : $valeur";
 @endphp
 
+  
     <h1 class="font-hairline mb-6 text-center">Liste des places</h1>
     <div class="w-2/3 mx-auto">
       <div class="bg-white shadow-md rounded my-6">
@@ -28,11 +29,13 @@ echo "USER : $valeur";
               <a href='/showPlace?numP=@php echo$numplace;@endphp' class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark">Consulter</a>
             </tr>
           <?php endforeach; ?>
-          <div class="flex items-center justify-between">
-          <input type='submit' value='Ajouter' name='Ajouter' id='submit' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          </div>
       </tbody>
       </table>
+    </div>
+    <div style="text-align : center">
+      <a href='\ajoutPlace'>
+      <input type='button' value='Ajouter' name='Ajouter' id='ajouter' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ">
+    </a>
     </div>
   </div>
 @stop
