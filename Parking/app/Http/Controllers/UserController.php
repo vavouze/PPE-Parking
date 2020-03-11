@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\ListeAttente;
+use App\Reservation;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -31,8 +33,32 @@ class UserController extends BaseController
 
         if(isset($info[0]->IDpersonne))
         {
+            $PlaceActuelle = Reservation::where('IDpersonne', $id)
+                ->where('Fin', 'n')
+                ->get();
+
+            $NameUtil = utilisateur::find($id);
+
+
+            $temp = 0;
+
+            $ListeAttente = ListeAttente::where('IDpersonne', $id)->get();
+
+
+            $occurList = count($ListeAttente);
+
+            if ($occurList != 0){
+                $temp = 1;
+
+            }
+
+
             return view('infoutilisateur')
-                      ->with('info', $info);
+                ->with('numPlace',$PlaceActuelle)
+                ->with('info', $info)
+                ->with('Name',$NameUtil)
+                ->with('check',$temp)
+                ->with('List',$ListeAttente);
         }
         else
         {

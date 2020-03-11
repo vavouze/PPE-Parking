@@ -11,16 +11,22 @@ use DB;
 
 class ReservationController extends BaseController
 {
-    public function Reservation(Request $req) {
 
 
-        $Date_debut= $req->input('date_deb');
-        $id = $req->session()->get('id');
+
+
+    public function Reservation(Request $req)
+    {
+
+
+        $Date_debut = $req->input('date_deb');
+        $id = session('id');
+
 
 
         $PlaceDisp = DB::table('place')
-            ->select ('Numplace','Etat')
-            ->where('Etat',0)
+            ->select('Numplace', 'Etat')
+            ->where('Etat', 0)
             ->get();
 
         $NbPlaceDisp = count($PlaceDisp);
@@ -32,15 +38,13 @@ class ReservationController extends BaseController
         $randomPlace = $arr[$randomind]->Numplace;
 
 
-        if ($NbPlaceDisp === 0){
+        if ($NbPlaceDisp === 0) {
 
             return view('ListeAttente');
-        }
-
-        else{
+        } else {
 
             DB::table('reservation')->insert(
-                ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10','NumPlace'=> $randomPlace , 'IDpersonne'=> $id,'FIN(o/n)' => 'n']
+                ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10', 'NumPlace' => $randomPlace, 'IDpersonne' => $id, 'Fin' => 'n']
             );
 
             DB::table('place')
@@ -50,13 +54,58 @@ class ReservationController extends BaseController
             return redirect('/user');
 
         }
-
-
-
-
-
-
-
-
     }
+
+
+
+    public function ReservationAdmin(Request $req, $id)
+    {
+
+
+        $Date_debut = $req->input('date_deb');
+
+
+
+        $PlaceDisp = DB::table('place')
+            ->select('Numplace', 'Etat')
+            ->where('Etat', 0)
+            ->get();
+
+        $NbPlaceDisp = count($PlaceDisp);
+        $arr = [];
+        foreach ($PlaceDisp as $key) {
+            $arr[] = $key;
+        }
+        $randomind = array_rand($arr);
+        $randomPlace = $arr[$randomind]->Numplace;
+
+
+        if ($NbPlaceDisp === 0) {
+
+            return view('ListeAttente');
+        } else {
+
+            DB::table('reservation')->insert(
+                ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10', 'NumPlace' => $randomPlace, 'IDpersonne' => $id, 'Fin' => 'n']
+            );
+
+            DB::table('place')
+                ->where('NumPlace', $randomPlace)
+                ->update(['etat' => 1]);
+
+            return redirect("/infoperso/echo $id");
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

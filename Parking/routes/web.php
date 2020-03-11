@@ -72,6 +72,7 @@ Route::get('/infoutilisateur', function () {
 });
 
 
+
 Route::get('/listedattentes', function () {
     return view('listeattente');
 });
@@ -92,7 +93,9 @@ Route::get('/useraccepte/{id}', 'ConfirmuserController@ModifyEtatuser');
 
 Route::get('/refuser/{id}', 'ConfirmuserserController@destroyinfo' );
 
-Route::post('/reservation', 'ReservationController@home');
+
+Route::post('/reservation/{id}', 'ReservationController@ReservationAdmin');
+
 
 Route::post('/Cancelreservation', 'CancelReservationController@CancelReservation');
 
