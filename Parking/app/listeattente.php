@@ -17,4 +17,13 @@ class listeattente extends Model
     public $incrementing = false;
 
     public $timestamps = false;
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function utilisateurs()
+    {
+        return $this->belongsTo('utilisateurs');
+    }
+    
 }

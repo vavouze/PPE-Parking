@@ -54,3 +54,7 @@ Route::get('supprimer/{id}', 'UserController@destroyinfo' );
 Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');
 });
+
+Route::get('/listedattente', function () {
+    return view('listeattente');
+});

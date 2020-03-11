@@ -17,4 +17,9 @@ class utilisateur extends Model
     public $incrementing = false;
 
     public $timestamps = false;
+
+    public function listeattente()
+    {
+        return $this->hasMany('listeattente');
+    }
 }
