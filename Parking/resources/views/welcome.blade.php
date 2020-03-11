@@ -9,7 +9,7 @@ $valeur = session('id');
   <div class="container mx-auto h-full flex justify-center items-center">
     <div class="w-1/3">
       @if(!empty($message))
-      <div class="rounded-lg shadow-lg border-t-8 ">
+      <div class="rounded-lg shadow-lg border-t-8 border-red-400 mb-8 ">
         <h1 class="font-hairline text-red-600 font-bold mb-8 mr-4 ml-4 text-center">{{$message ?? ''}}</h1>
       </div>
       @endif
