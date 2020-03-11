@@ -16,5 +16,5 @@ class utilisateur extends Model
     //Indicate if the primary Key is a auto-incrementing
     public $incrementing = false;
 
-  public $timestamps = false;
+    public $timestamps = false;
 }

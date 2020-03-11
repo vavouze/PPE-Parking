@@ -45,6 +45,8 @@ Route::get('s', 'UserController@showUser');
 
 Route::post('/modif/{id}', 'UserController@modifyInfoPerso');
 
+Route::post('/modifmdp/{id}', 'UserController@modifyMDP');
+
 Route::get('infoperso/{id}', 'UserController@showInfo' );
 
 Route::get('supprimer/{id}', 'UserController@destroyinfo' );

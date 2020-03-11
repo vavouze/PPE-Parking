@@ -24,7 +24,7 @@ $valeur = session('id');
               <td class="py-4 px-6 border-b border-grey-light"> {{$d->Nom ?? ''}}</td>
               <td class="py-4 px-6 border-b border-grey-light"> {{$d->Prenom ?? ''}}</td>
               <td class="py-4 px-6 border-b border-grey-light"> {{$d->Tel ?? ''}}</td>
-              @php  $lien = $d->IDpersonne;  @endphp
+              @php  $lien = $d->IDpersonne; @endphp
               <td class="py-4 px-6 border-b border-grey-light"> <a href="{{url('infoperso', $d->IDpersonne)}}" class="text-grey-lighter font-bold py-1 px-3 rounded bg-green hover:bg-green-dark">Modifier</a></td>
               <td class="py-4 px-6 border-b border-grey-light"> <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('supprimer', $d->IDpersonne)}}'" >Supprimer</button></td>
           </tr>

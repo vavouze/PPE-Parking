@@ -10,6 +10,7 @@ $valeur = session('id');
 @if(empty($info[0]->IDpersonne))
 <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
 @else
+<p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
 <div class="container mx-auto h-full flex justify-center items-center">
   <div class="w-1/3 mx-auto">
     <h1 class="font-hairline mb-6 text-center">Modification des informations personnelles</h1>
@@ -85,7 +86,7 @@ $valeur = session('id');
   <div class="w-1/3 mx-auto">
     <h1 class="font-hairline mb-6 text-center">Modification du mot de passe</h1>
     <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
-      <form  action="/modif/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
+      <form  action="/modifmdp/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">

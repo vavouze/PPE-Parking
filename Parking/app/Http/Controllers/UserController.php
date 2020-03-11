@@ -25,7 +25,6 @@ class UserController extends BaseController
 
     public function showInfo(Request $req, $id)
     {
-
         $info = utilisateur::where(['IDpersonne' => $id])
                   ->get();
 
@@ -46,25 +45,59 @@ class UserController extends BaseController
     public function modifyInfoPerso(Request $req, $id)
     {
       $info = $req->input();
-      
-      utilisateur::where('IDpersonne', $id)
-                ->update(['Nom'=> $info['nom'],
-                          'Prenom'=> $info['prenom'],
-                          'IDpersonne'=> $info['username'],
-                          'Tel'=> $info['telephone'],
-                          'AdRue'=> $info['adrue'],
-                          'CP'=> $info['cp'],
-                          'Ville'=> $info['ville'],
-                          'Mail'=> $info['mail']
-                          ]);
-          $data = utilisateur::all();
-          $message ="l'utilisateur ".$info['nom']." ".$info['prenom']." à bien été modifié !";
-        return view('allUtilisateur')
+
+      $testUsername = utilisateur::find($info['username']);
+      if (isset($testUsername) && $info['username'] === $testUsername['IDpersonne'] && $info['username'] ==! $id)
+      {
+        $message = "Ce nom d'utilisateur est déjà utilisé !";
+      }
+      else
+      {
+        utilisateur::where('IDpersonne', $id)
+                  ->update(['Nom'=> $info['nom'],
+                            'Prenom'=> $info['prenom'],
+                            'IDpersonne'=> $info['username'],
+                            'Tel'=> $info['telephone'],
+                            'AdRue'=> $info['adrue'],
+                            'CP'=> $info['cp'],
+                            'Ville'=> $info['ville'],
+                            'Mail'=> $info['mail']
+                            ]);
+        $message ="l'utilisateur ".$info['nom']." ".$info['prenom']." à bien été modifié !";
+      }
+        $info = utilisateur::where('IDpersonne',$id)->get();
+        return view('infoutilisateur')
           ->with('message', $message)
-          ->with('data', $data);
+          ->with('info', $info);
 
 
 
+    }
+    public function modifyMDP(Request $req, $id)
+    {
+      $mdp= $req->input('mdp');
+      $Cmdp= $req->input('Cmdp');
+      $info = utilisateur::where('IDpersonne',$id)->get();
+
+      if($mdp==$Cmdp)
+      {
+        $hashmdp = password_hash($mdp, PASSWORD_DEFAULT);
+        $savemdp = utilisateur::find($id);
+        $savemdp->MotDePasse = $hashmdp;
+        $savemdp->save();
+        $info = utilisateur::where('IDpersonne',$id)->get();
+        $message ="Le mot de passe de l'utilisateur ".$info[0]->Nom." ".$info[0]->Prenom." à bien été modifié !";
+        return view('infoutilisateur')
+        ->with('message', $message)
+        ->with('info', $info);
+      }
+      else
+      {
+        $message ="mauvais mot de passe !";
+        return view('allUtilisateur')
+        ->with('message', $message)
+        ->with('info', $info);
+      }
     }
     public function destroyinfo( Request $req, $id)
     {
