@@ -42,7 +42,7 @@ $valeur = session('id');
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
               Téléphone
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->Tel ?? ''}}" id="grid-first-named" name="telephone" type="text">
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->Tel ?? ''}}" id="grid-first-named" name="telephone" type="text" minlength="10" maxlength="10" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$">
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -50,7 +50,7 @@ $valeur = session('id');
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
               E-mail
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->Mail ?? ''}}" id="grid-city" name="mail" type="text" placeholder="3 rue de Paris">
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->Mail ?? ''}}" id="grid-city" name="mail" type="email" placeholder="test@test.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -72,7 +72,7 @@ $valeur = session('id');
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
               Code postal
             </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->CP ?? ''}}" id="grid-last-name" name="cp" type="text" placeholder="Doe">
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->CP ?? ''}}" id="grid-last-name" name="cp" type="number" placeholder="75018" minlength="5" maxlength="5">
           </div>
         </div>
         <div class="flex items-center justify-center">
