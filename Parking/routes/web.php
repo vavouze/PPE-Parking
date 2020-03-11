@@ -58,3 +58,7 @@ Route::get('/infoutilisateur', function () {
 Route::get('/listedattente', function () {
     return view('listeattente');
 });
+
+Route::get('/listeattente', 'listeattenteController@Showlisteattente');
+
+Route::get('/suplisteattente/{id}', 'listeattenteController@destroylisteattente');

@@ -12,6 +12,7 @@ use App\utilisateur;
 
 class UserController extends BaseController
 {
+  //afficher tout les utilisateurs
     public function showUser(Request $req)
     {
 
@@ -22,7 +23,7 @@ class UserController extends BaseController
        return view('allUtilisateur')
         ->with('data', $data);
     }
-
+    //afficher les info perso d'un seul utilisateur
     public function showInfo(Request $req, $id)
     {
         $info = utilisateur::where(['IDpersonne' => $id])
@@ -41,7 +42,7 @@ class UserController extends BaseController
         }
 
     }
-
+    //modifier les infos de l'utilisateur
     public function modifyInfoPerso(Request $req, $id)
     {
       $info = $req->input();
@@ -73,6 +74,7 @@ class UserController extends BaseController
 
 
     }
+    //modifier le mot de passe
     public function modifyMDP(Request $req, $id)
     {
       $mdp= $req->input('mdp');
@@ -97,12 +99,14 @@ class UserController extends BaseController
       else
       {
         $message ="Il semblerait que les mots de passe soient différents !";
-        
+
         return view('infoutilisateur')
         ->with('message', $message)
         ->with('info', $info);
       }
     }
+
+    //supprimer un utilisateur
     public function destroyinfo( Request $req, $id)
     {
       $info = utilisateur::where(['IDpersonne' => $id])

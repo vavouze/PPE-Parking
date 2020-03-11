@@ -20,6 +20,6 @@ class utilisateur extends Model
 
     public function listeattente()
     {
-        return $this->hasMany('listeattente');
+        return $this->hasOne('App\listeattente', 'IDpersonne');
     }
 }

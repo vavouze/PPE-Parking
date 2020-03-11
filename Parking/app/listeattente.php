@@ -23,7 +23,7 @@ class listeattente extends Model
      */
     public function utilisateurs()
     {
-        return $this->belongsTo('utilisateurs');
+        return $this->belongsTo('App\utilisateur');
     }
-    
+
 }
