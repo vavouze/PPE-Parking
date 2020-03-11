@@ -85,16 +85,20 @@ class UserController extends BaseController
         $savemdp = utilisateur::find($id);
         $savemdp->MotDePasse = $hashmdp;
         $savemdp->save();
+
         $info = utilisateur::where('IDpersonne',$id)->get();
+
         $message ="Le mot de passe de l'utilisateur ".$info[0]->Nom." ".$info[0]->Prenom." à bien été modifié !";
+
         return view('infoutilisateur')
         ->with('message', $message)
         ->with('info', $info);
       }
       else
       {
-        $message ="mauvais mot de passe !";
-        return view('allUtilisateur')
+        $message ="Il semblerait que les mots de passe soient différents !";
+        
+        return view('infoutilisateur')
         ->with('message', $message)
         ->with('info', $info);
       }
