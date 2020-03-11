@@ -43,20 +43,14 @@ $valeur = session('id');
         <nav class="flex w-16 bg-white shadow-lg fl-16 w-16ex flex-col items-center">
             <a class="text-3xl font-black mt-2 mb-8" href="/">P</a>
             @if ($valeur != NULL)
-                <a href="/user"><img src="/img/user-1.png"class="h-8 w-8  cursor-pointer mb-10"></a>
-                <a href="/deconnexion"><img src="/img/deco.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+
                 @if ($valeur != 'ADMIN')
-                    
-                  <img src="/img/favicon.png" class="h-8 w-8 opacity-25  cursor-pointer mb-10" />
-                  <img src="" class="h-8 w-8 opacity-25  cursor-pointer mb-10" />
+                   <a href="/user"><img src="/img/user-1.png"class="h-8 w-8  cursor-pointer mb-10"></a>
 
-                  <img src="" class="h-8 w-8 opacity-25  cursor-pointer" />
                 @else
-                  <a href="/s"><img src="/img/utilisateurs.png"class="h-8 w-8  cursor-pointer mb-10"></a>
-
-                  <img src="" class="h-8 w-8 opacity-25  cursor-pointer" />-->
-
+                  <a href="/s"><img src="/img/Allusers.png"class="h-8 w-8  cursor-pointer mb-10"></a>
                 @endif
+                <a href="/deconnexion"><img src="/img/deco.png"class="h-8 w-8  cursor-pointer mb-10"></a>
             @endif
         </nav>
         <div class="w-full flex flex-row">

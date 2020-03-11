@@ -65,7 +65,9 @@ Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');
 });
 
-Route::post('/reservation', 'ReservationController@home');
+Route::post('/reservation', 'ReservationController@Reservation');
+
+Route::post('/reservation/{id}', 'ReservationController@ReservationAdmin');
 
 Route::post('/Cancelreservation', 'CancelReservationController@CancelReservation');
 
