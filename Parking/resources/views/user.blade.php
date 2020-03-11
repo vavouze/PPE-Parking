@@ -192,7 +192,7 @@ $valeur = session('id');
 
     <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
 
-        <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+        <div class="modal-cancel-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
             <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                 <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
             </svg>
@@ -220,7 +220,7 @@ $valeur = session('id');
 
                 <div class="flex items-center justify-between">
                     <input type='submit' value='Valider' name='reservation' id='submit' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    <button class="modal-cancel-close px-3 bg-indigo-500 p-2 rounded-lg text-white hover:bg-indigo-400">Annuler</button>
+                    <input value='Annuler'  alt="Annuler" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style="max-width:95px" onclick="toggleModalCancel()">
                 </div>
             </form>
 
@@ -253,6 +253,7 @@ $valeur = session('id');
     }
 
 
+
     document.onkeydown = function(evt) {
         evt = evt || window.event
         var isEscape = false
@@ -281,6 +282,10 @@ $valeur = session('id');
         modal.classList.toggle('opacity-0')
         modal.classList.toggle('pointer-events-none')
         body.classList.toggle('modal-active')
+    }
+
+    function CloseModal() {
+
     }
 
 
