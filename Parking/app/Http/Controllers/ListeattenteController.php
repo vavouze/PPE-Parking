@@ -16,12 +16,17 @@ class ListeattenteController extends BaseController
 {
     public function ShowListeattente(Request $req)
     {
+      $etat = $_GET['etat'];
+      $id = $_GET['id'];
       $liste = listeattente::join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
                       ->orderBy('listeattente.Rang')
                       ->get();
       //$liste->SortBy("$liste->listeattente['Rang']")->values()->all();
+
       return view('ListeAttente')
-            ->with('listeattente', $liste);
+            ->with('listeattente', $liste)
+            ->with('etat', $etat)
+            ->with('id', $id);
     }
 
     public function destroylisteattente( Request $req, $id)
@@ -38,4 +43,5 @@ class ListeattenteController extends BaseController
        ->with('listeattente', $liste)
        ->with('message', $message);
     }
+
 }

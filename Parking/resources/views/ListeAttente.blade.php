@@ -25,8 +25,20 @@ $valeur = session('id');
                   <td class="py-4 px-6 border-b border-grey-light"> {{$liste->Rang?? ''}}</td>
                   <td class="py-4 px-6 border-b border-grey-light"> {{$liste->Nom ?? ''}}</td>
                   <td class="py-4 px-6 border-b border-grey-light"> {{$liste->Prenom ?? ''}}</td>
-                  <td class="py-4 px-6 border-b border-grey-light"> <a href="{{url('infoperso', $liste->IDpersonne)}}" class="text-grey-lighter font-bold py-1 px-3 rounded bg-green hover:bg-green-dark">Modifier</a></td>
+                  <td class="py-4 px-6 border-b border-grey-light"> <a href="/listeattente?etat=@php echo$etat=TRUE;@endphp&id=@php echo$liste->IDpersonne;@endphp" class="text-grey-lighter font-bold py-1 px-3 rounded bg-green hover:bg-green-dark">Modifier</a></td>
                   <td class="py-4 px-6 border-b border-grey-light"> <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('destroy', $liste->IDpersonne)}}'" >Supprimer</button></td>
+                  @if($etat === TRUE && $liste->IDpersonne === $id)
+                    <tr class="hover:bg-grey-lighter">
+                      <td class="py-4 px-6 border-b border-grey-light text-center"> {{$l ?? ''}}</td>
+                      <td class="py-4 px-6 border-b border-grey-light font-bold"> Rang souhaité : <form Action="#" method="post">
+                        <td class="py-4 px-6 border-b border-grey-light text-center"><input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-grey-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value="{{$liste->Rang ?? ''}}" id="grid-number" name="rang" type="number"></form></td>
+                      </td>
+                        <td class="py-4 px-6 border-b border-grey-light text-center"><input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type='submit' value='modifier' name='modifer' id='submit'>
+                      </td>
+                      <td class="py-4 px-6 border-b border-grey-light text-center"> {{$l ?? ''}}</td>
+                      <td class="py-4 px-6 border-b border-grey-light text-center"> {{$l ?? ''}}</td>
+                    </tr>
+                  @endif
               </tr>
           @endforeach
         </tbody>

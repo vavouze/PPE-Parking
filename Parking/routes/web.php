@@ -55,7 +55,7 @@ Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');
 });
 
-Route::get('/listedattente', function () {
+Route::get('/listedattentes', function () {
     return view('listeattente');
 });
 
