@@ -29,6 +29,33 @@ class ListeattenteController extends BaseController
             ->with('id', $id);
     }
 
+    public function Modifyrang(Request $req, $id)
+    {
+      $rang = $req->input('rang');
+      $rangdepart = listeattente::select('listeattente.Rang')
+                      ->where('listeattente.IDpersonne', $id)
+                      ->join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
+                      ->orderBy('listeattente.Rang')
+                      ->get();
+      $Nompersrangvoulu = listeattente::select('listeattente.Rang','Nom', 'Prenom')
+                      ->where('listeattente.Rang', $rang)
+                      ->join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
+                      ->orderBy('listeattente.Rang')
+                      ->get();
+
+      $saveid1 = listeattente::find($Nompersrangvoulu[0]->Rang);
+      $saveid1->Rang = 100;
+      $saveid1->save();
+      $saveid = listeattente::find($rangdepart[0]->Rang);
+      $saveid->Rang = $rang;
+      $saveid->save();
+      $saveid = listeattente::find(100);
+      $saveid->Rang = $rangdepart[0]->Rang;
+      $saveid->save();
+      
+      return redirect('/listeattente?etat=0&id=0');
+    }
+
     public function destroylisteattente( Request $req, $id)
     {
       $info = utilisateur::where(['IDpersonne' => $id])

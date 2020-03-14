@@ -29,14 +29,19 @@ $valeur = session('id');
                   <td class="py-4 px-6 border-b border-grey-light"> <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('destroy', $liste->IDpersonne)}}'" >Supprimer</button></td>
                   @if($etat === TRUE && $liste->IDpersonne === $id)
                     <tr class="hover:bg-grey-lighter">
-                      <td class="py-4 px-6 border-b border-grey-light text-center"> {{$l ?? ''}}</td>
-                      <td class="py-4 px-6 border-b border-grey-light font-bold"> Rang souhaité : <form Action="#" method="post">
-                        <td class="py-4 px-6 border-b border-grey-light text-center"><input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-grey-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value="{{$liste->Rang ?? ''}}" id="grid-number" name="rang" type="number"></form></td>
-                      </td>
-                        <td class="py-4 px-6 border-b border-grey-light text-center"><input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type='submit' value='modifier' name='modifer' id='submit'>
-                      </td>
-                      <td class="py-4 px-6 border-b border-grey-light text-center"> {{$l ?? ''}}</td>
-                      <td class="py-4 px-6 border-b border-grey-light text-center"> {{$l ?? ''}}</td>
+                      <td class="py-4 px-6 border-b border-grey-light text-center"> </td>
+                      <td class="py-4 px-6 border-b border-grey-light font-bold">Rang souhaité :</td>
+                        <form Action="/modifrang/@php echo$id;@endphp" method="post">
+                          @csrf
+                          <td class="py-4 px-6 border-b border-grey-light text-center">
+                            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-grey-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" value="{{$liste->Rang ?? ''}}" id="grid-number" name="rang" type="number">
+                          </td>
+                          <td class="py-4 px-6 border-b border-grey-light text-center">
+                            <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type='submit' value='modifier' name='modifer' id='submit'>
+                          </td>
+                        </form>
+                      <td class="py-4 px-6 border-b border-grey-light text-center"> </td>
+                      <td class="py-4 px-6 border-b border-grey-light text-center">  </td>
                     </tr>
                   @endif
               </tr>

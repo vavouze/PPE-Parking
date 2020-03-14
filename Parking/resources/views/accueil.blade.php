@@ -15,6 +15,7 @@ $valeur = session('id');
 <meta charset="utf-8">
 <link href="css/cssGeneral.css" rel="stylesheet" type="text/css">
 <script src="https://use.fontawesome.com/2b688b0673.js"></script>
+<script src="https://kit.fontawesome.com/48e6b0ef8d.js" crossorigin="anonymous"></script>
 
 <!-- Latest compiled and minified CSS
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
@@ -38,6 +39,7 @@ $valeur = session('id');
                   <img src="" class="h-8 w-8 opacity-25  cursor-pointer" />
                 @else
                   <a href="/s"><img src="/img/utilisateurs.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+                  <span style="color: grey;"><a href="/listeattente?etat=0&id=0"><i class="fas fa-list-ol fa-2x"></i></a></span>
                 @endif
             @endif
         </nav>

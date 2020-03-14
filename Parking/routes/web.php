@@ -62,3 +62,5 @@ Route::get('/listedattentes', function () {
 Route::get('/listeattente', 'listeattenteController@Showlisteattente');
 
 Route::get('/suplisteattente/{id}', 'listeattenteController@destroylisteattente');
+
+Route::post('/modifrang/{id}', 'listeattenteController@Modifyrang');
