@@ -41,7 +41,7 @@ Route::get('/deconnexion','deconnexionController@deconnexion');
 
 Route::get('/user','PlaceController@numPlace');
 
-Route::get('s', 'UserController@showUser');
+Route::get('utilisateur', 'UserController@showUser');
 
 Route::post('/modif/{id}', 'UserController@modifyInfoPerso');
 

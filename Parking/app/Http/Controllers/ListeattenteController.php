@@ -42,17 +42,24 @@ class ListeattenteController extends BaseController
                       ->join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
                       ->orderBy('listeattente.Rang')
                       ->get();
-
-      $saveid1 = listeattente::find($Nompersrangvoulu[0]->Rang);
-      $saveid1->Rang = 100;
-      $saveid1->save();
-      $saveid = listeattente::find($rangdepart[0]->Rang);
-      $saveid->Rang = $rang;
-      $saveid->save();
-      $saveid = listeattente::find(100);
-      $saveid->Rang = $rangdepart[0]->Rang;
-      $saveid->save();
-      
+      if(isset($Nompersrangvoulu[0]->Rang))
+      {
+        $saveid1 = listeattente::find($Nompersrangvoulu[0]->Rang);
+        $saveid1->Rang = 100;
+        $saveid1->save();
+        $saveid = listeattente::find($rangdepart[0]->Rang);
+        $saveid->Rang = $rang;
+        $saveid->save();
+        $saveid = listeattente::find(100);
+        $saveid->Rang = $rangdepart[0]->Rang;
+        $saveid->save();
+      }
+      else
+      {
+        $saveid = listeattente::find($rangdepart[0]->Rang);
+        $saveid->Rang = $rang;
+        $saveid->save();
+      }
       return redirect('/listeattente?etat=0&id=0');
     }
 

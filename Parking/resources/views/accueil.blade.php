@@ -38,7 +38,7 @@ $valeur = session('id');
                   <img src="" class="h-8 w-8 opacity-25  cursor-pointer mb-10" />
                   <img src="" class="h-8 w-8 opacity-25  cursor-pointer" />
                 @else
-                  <a href="/s"><img src="/img/utilisateurs.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+                  <a href="/utilisateur"><img src="/img/utilisateurs.png"class="h-8 w-8  cursor-pointer mb-10"></a>
                   <span style="color: grey;"><a href="/listeattente?etat=0&id=0"><i class="fas fa-list-ol fa-2x"></i></a></span>
                 @endif
             @endif

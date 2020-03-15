@@ -16,7 +16,7 @@ class UserController extends BaseController
     public function showUser(Request $req)
     {
 
-           $data = utilisateur::all();
+           $data = utilisateur::OrderBy('Nom')->get();
 
 
 
@@ -115,7 +115,7 @@ class UserController extends BaseController
 
       utilisateur::find($id)->delete();
 
-      $data = utilisateur::all();
+      $data = utilisateur::orderBy('Nom')->get();
       return view('allUtilisateur')
        ->with('data', $data)
        ->with('message', $message);

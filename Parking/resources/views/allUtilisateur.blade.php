@@ -55,7 +55,7 @@ $valeur = session('id');
         <div class="flex justify-between items-center pb-3">
           <p class="text-2xl font-bold">Etes-vous sûr ?</p>
           <div class="modal-close cursor-pointer z-50">
-            <a href="/s">
+            <a href="/utilisateur">
             <svg class="fill-current text-black hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
               <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
             </svg></a>
@@ -63,7 +63,7 @@ $valeur = session('id');
         </div>
   <div class="flex justify-end pt-2">
           <button class="px-4 bg-transparent p-3 rounded-lg text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" onclick="location.href='{{url('infoperso', $d->IDpersonne)}}'">Supprimer</button>
-          <button class="modal-close px-4 bg-blue-500 p-3 rounded-lg text-white hover:bg-blue-400" onclick="location.href='/s'">Annuler</button>
+          <button class="modal-close px-4 bg-blue-500 p-3 rounded-lg text-white hover:bg-blue-400" onclick="location.href='/utilisateur'">Annuler</button>
         </div>
 
       </div>
