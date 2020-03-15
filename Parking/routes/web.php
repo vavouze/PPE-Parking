@@ -64,3 +64,13 @@ Route::get('/listeattente', 'listeattenteController@Showlisteattente');
 Route::get('/suplisteattente/{id}', 'listeattenteController@destroylisteattente');
 
 Route::post('/modifrang/{id}', 'listeattenteController@Modifyrang');
+
+Route::get('/confirmationuser', function () {
+    return view('Confirmationutilisateur');
+});
+
+Route::get('/confirmuser', 'ConfirmuserController@showUser');
+
+Route::get('/useraccepte/{id}', 'ConfirmuserController@ModifyEtatuser');
+
+Route::get('/refuser/{id}', 'ConfirmuserserController@destroyinfo' );

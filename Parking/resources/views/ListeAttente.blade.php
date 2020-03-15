@@ -13,20 +13,22 @@ $valeur = session('id');
     <table class="text-left w-full border-collapse">
         <thead>
             <tr>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Rang</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nom</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Prenom</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Rang</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Nom</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Prénom</th>
+                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
           @foreach($listeattente as $liste)
               <tr class="hover:bg-grey-lighter">
-                  <td class="py-4 px-6 border-b border-grey-light"> {{$liste->Rang?? ''}}</td>
-                  <td class="py-4 px-6 border-b border-grey-light"> {{$liste->Nom ?? ''}}</td>
-                  <td class="py-4 px-6 border-b border-grey-light"> {{$liste->Prenom ?? ''}}</td>
-                  <td class="py-4 px-6 border-b border-grey-light"> <a href="/listeattente?etat=@php echo$etat=TRUE;@endphp&id=@php echo$liste->IDpersonne;@endphp" class="text-grey-lighter font-bold py-1 px-3 rounded bg-green hover:bg-green-dark">Modifier</a></td>
-                  <td class="py-4 px-6 border-b border-grey-light"> <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('destroy', $liste->IDpersonne)}}'" >Supprimer</button></td>
+                  <td class="py-4 px-6 border-b border-grey-light text-center"> {{$liste->Rang?? ''}}</td>
+                  <td class="py-4 px-6 border-b border-grey-light text-center"> {{$liste->Nom ?? ''}}</td>
+                  <td class="py-4 px-6 border-b border-grey-light text-center"> {{$liste->Prenom ?? ''}}</td>
+                  <td class="py-4 px-6 border-b border-grey-light text-center">
+                     <button onclick="location.href='/listeattente?etat=@php echo$etat=TRUE;@endphp&id=@php echo$liste->IDpersonne;@endphp'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier</button>
+                     <button  class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('destroy', $liste->IDpersonne)}}'" >Supprimer</button>
+                  </td>
                   @if($etat === TRUE && $liste->IDpersonne === $id)
                     <tr class="hover:bg-grey-lighter">
                       <td class="py-4 px-6 border-b border-grey-light text-center"> </td>
@@ -41,7 +43,6 @@ $valeur = session('id');
                           </td>
                         </form>
                       <td class="py-4 px-6 border-b border-grey-light text-center"> </td>
-                      <td class="py-4 px-6 border-b border-grey-light text-center">  </td>
                     </tr>
                   @endif
               </tr>

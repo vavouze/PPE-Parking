@@ -8,31 +8,34 @@ $valeur = session('id');
 
 @endphp
 <div class="w-2/3 mx-auto">
-  <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
-  <div class="bg-white shadow-md rounded my-6">
-    <table class="text-left w-full border-collapse">
-        <thead>
-            <tr>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Nom</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Prenom</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Téléphone</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Actions</th>
+  @if(empty($data[0]->Nom))
+    <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
+  @else
+    <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full border-collapse">
+          <thead>
+              <tr>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Nom</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Prenom</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Téléphone</th>
+                  <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+            @foreach($data as $d)
+            <tr class="hover:bg-grey-lighter">
+                <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Nom ?? ''}}</td>
+                <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Prenom ?? ''}}</td>
+                <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Tel ?? ''}}</td>
+                @php  $lien = $d->IDpersonne; @endphp
+                <td class="py-4 px-6 border-b border-grey-light text-center"> <button onclick="location.href='{{url('/useraccepte', $d->IDpersonne)}}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Accepter</button>
+                 <button  class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('refuser', $d->IDpersonne)}}'" >Refuser</button></td>
             </tr>
-        </thead>
-        <tbody>
-          @foreach($data as $d)
-          <tr class="hover:bg-grey-lighter">
-              <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Nom ?? ''}}</td>
-              <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Prenom ?? ''}}</td>
-              <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Tel ?? ''}}</td>
-              @php  $lien = $d->IDpersonne; @endphp
-              <td class="py-4 px-6 border-b border-grey-light text-center"> <button onclick="location.href='{{url('infoperso', $d->IDpersonne)}}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier</button>
-              <button  class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('supprimer', $d->IDpersonne)}}'" >Supprimer</button></td>
-          </tr>
-          @endforeach
-        </tbody>
-    </table>
-  </div>
+            @endforeach
+          </tbody>
+      </table>
+    </div>
+  @endif
 </div>
 
 @php
