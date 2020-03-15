@@ -37,16 +37,13 @@ $valeur = session('id');
 
 @else
 
-  @php
-    echo "USER : $valeur";
-  @endphp
+    <button class="bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"> USER : {{$valeur}}</button>
     <div class='description'>
-      <br><p class='texteAccueil'>Cette application web permet de gérer l'hébergement des ligues sportive
-            durant les rencontres.</p>
+      <br><p class='texteAccueil'>Cette application web permet de gérer les places de parking.</p>
       <p class='texteAccueil'>Elle offre les services suivants :</p>
       <ul class='list'>
-         <p> - Gérer les établissements (caractéristiques et capacités d'accueil) acceptant d'héberger les groupes de sportifs.<br>
-          - Consulter, réaliser ou modifier les attributions des chambres aux groupes dans les établissements.</p>
+         <p> - Gérer les utilisateurs.<br>
+          - La file d'attente pour les demandeurs de places.</p>
       </ul>
    </div>
 @endif

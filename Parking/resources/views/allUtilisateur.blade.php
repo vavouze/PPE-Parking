@@ -9,7 +9,7 @@ $valeur = session('id');
 @endphp
 <div class="w-2/3 mx-auto">
   <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
-  <div class="bg-white shadow-md rounded my-6">
+  <div class="bg-white shadow-md rounded my-6 rounded-lg shadow-lg border-t-8 border-blue-200">
     <table class="text-left w-full border-collapse">
         <thead>
             <tr>

@@ -30,7 +30,7 @@ $valeur = session('id');
 
 <div class="relative bg-gray-100 min-h-screen flex" id="app">
         <nav class="flex w-16 bg-white shadow-lg fl-16 w-16ex flex-col items-center">
-            <a class="text-3xl font-black mt-2 mb-8">P</a>
+            <a class="text-3xl font-black mt-2 mb-8" href="/">P</a>
             @if ($valeur != NULL)
               <a href="/deconnexion"><img src="/img/deco.png"class="h-8 w-8  cursor-pointer mb-10"></a>
                 @if ($valeur != 'ADMIN')
