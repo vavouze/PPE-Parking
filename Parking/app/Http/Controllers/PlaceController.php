@@ -57,11 +57,13 @@ class PlaceController extends BaseController
 
     }
 
-    public function Reservation(Request $req) {
+    public function Reservation(Request $req,$id) {
 
         $Date_debut= $req->input('date_deb');
+
+        $value = session()->get('id');
         $Date_Fin = date('Y-m-d ', strtotime($Date_debut . ' +7 day'));
-        $id = $req->session()->get('id');
+
 
         $PlaceDisp= Place::where('Etat',0)->get();
 
@@ -77,7 +79,9 @@ class PlaceController extends BaseController
 
         if ($NbPlaceDisp === 0){
 
-            return redirect()->action('ListeAttenteController@InsertListeAttente');
+            return redirect("/ListeAttente/$id");
+
+
         }
 
         else
@@ -104,7 +108,10 @@ class PlaceController extends BaseController
             Place::where('NumPlace',$randomPlace)
                 ->update(['etat' => 1]);
 
-            return redirect('/user');
+            if ($value === 'ADMIN')
+                return redirect("/infoperso/$id");
+            else
+                return redirect("/user/$id");
 
         }
 

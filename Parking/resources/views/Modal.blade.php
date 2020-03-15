@@ -27,7 +27,7 @@ $valeur = session('id');
             @if($valeur === 'ADMIN')
             <form action="/reservation/@php echo $info[0]->IDpersonne@endphp" method="post" >
             @else
-                    <form action="/reservation" method="post" >
+            <form action="/reservation/@php echo $valeur@endphp" method="post" >
             @endif
                 <div class="mb-6">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -77,7 +77,11 @@ $valeur = session('id');
 
             <!--Body-->
 
-            <form action="/Cancelreservation" method="post" >
+            @if($valeur === 'ADMIN')
+                <form action="/Cancelreservation/@php echo $info[0]->IDpersonne@endphp" method="post" >
+            @else
+                <form action="/Cancelreservation/@php echo $valeur@endphp" method="post" >
+            @endif
                 <div class="mb-6">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
 

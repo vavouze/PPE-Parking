@@ -45,7 +45,7 @@ $valeur = session('id');
             @if ($valeur != NULL)
 
                 @if ($valeur != 'ADMIN')
-                   <a href="/user"><img src="/img/user-1.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+                   <a href="/user/@php echo $valeur@endphp"><img src="/img/user-1.png"class="h-8 w-8  cursor-pointer mb-10"></a>
 
                 @else
                   <a href="/s"><img src="/img/Allusers.png"class="h-8 w-8  cursor-pointer mb-10"></a>
