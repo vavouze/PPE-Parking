@@ -152,8 +152,7 @@ $valeur = session('id');
         </div>
         <div class="mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-1 py+5 px-3 ">
-
-            @php echo "<p>votre numéro de place est : ".$numPlace[0]->NumPlace." </p> <br />";@endphp
+            @php echo "<p>votre numéro de place est : ".$List[0]->Rang." </p> <br />";@endphp
 
 
             <div class="text-center py-5">

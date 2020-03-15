@@ -12,9 +12,9 @@ use DB;
 
 class CancelReservationController extends BaseController
 {
-    public function CancelReservation(Request $req){
+    public function CancelReservation(Request $req,$id){
 
-        $id = $req->session()->get('id');
+        $value = $req->session()->get('id');
 
         $FileOccur = DB::table('listeattente')
             ->select('IDpersonne')
@@ -57,7 +57,10 @@ class CancelReservationController extends BaseController
 
 
 
-        return redirect('/user');
+        if ($value === 'ADMIN')
+            return redirect("/infoperso/$id");
+        else
+            return redirect("/user/$id");
     }
 
 }

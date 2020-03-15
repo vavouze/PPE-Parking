@@ -50,7 +50,7 @@ Route::post('/inscription','RegisterController@register');
 
 Route::get('/deconnexion','deconnexionController@deconnexion');
 
-Route::get('/user','PlaceController@numPlace')->middleware('LogAuth');
+Route::get('/user/{id}','PlaceController@numPlace')->middleware('LogAuth');
 
 
 Route::get('utilisateur', 'UserController@showUser');
@@ -70,6 +70,7 @@ Route::get('supprimer/{id}', 'UserController@destroyinfo' );
 Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');
 });
+
 
 
 
@@ -93,10 +94,16 @@ Route::get('/useraccepte/{id}', 'ConfirmuserController@ModifyEtatuser');
 
 Route::get('/refuser/{id}', 'ConfirmuserserController@destroyinfo' );
 
+Route::post('/reservation/{id}', 'PlaceController@Reservation');
 
-Route::post('/reservation/{id}', 'ReservationController@ReservationAdmin');
+
+Route::post('/Cancelreservation/{id}', 'CancelReservationController@CancelReservation');
+
 
 
 Route::post('/Cancelreservation', 'CancelReservationController@CancelReservation');
+
+Route::get('/ListeAttente/{id}', 'ListeAttenteController@InsertListeAttente');
+
 
 

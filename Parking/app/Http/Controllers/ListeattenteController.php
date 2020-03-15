@@ -12,12 +12,11 @@ use DB;
 
 class ListeAttenteController extends BaseController
 {
-    public function InsertListeAttente(Request $req){
-
-
+    public function InsertListeAttente(Request $req,$id){
 
 
         $value = $req->session()->get('id');
+
 
         $NbListeAttente = DB::table('listeattente')
             ->select('*')
@@ -25,9 +24,12 @@ class ListeAttenteController extends BaseController
 
 
         DB::table('listeattente')->insert(
-            ['Rang' => count($NbListeAttente) + 1,  'IDpersonne' => $value]
+            ['Rang' => count($NbListeAttente) + 1,  'IDpersonne' => $id]
         );
-        return redirect('/user');
+        if ($value === 'ADMIN')
+            return redirect("/infoperso/$id");
+        else
+            return redirect("/user/$id");
 
 
 

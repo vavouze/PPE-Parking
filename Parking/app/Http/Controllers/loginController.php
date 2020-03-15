@@ -30,7 +30,7 @@ class loginController extends BaseController
         if (count($checkLog) > 0) {
           $hash = $checkLog[0]->MotDePasse;
           $id = $checkLog[0]->IDpersonne;
-          $url = "/user";
+          $url = "/user/".$username;
         }
         else
         {
