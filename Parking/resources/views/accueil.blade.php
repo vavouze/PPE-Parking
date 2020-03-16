@@ -19,8 +19,6 @@ $valeur = session('id');
 <script src="https://kit.fontawesome.com/48e6b0ef8d.js" crossorigin="anonymous"></script>
 
 
-
-
 <link rel="stylesheet" href=" {{ mix('css/main.css')}}">
 <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
@@ -41,6 +39,7 @@ $valeur = session('id');
 <body class="bg-grey-light h-screen font-sans">
 
 <div class="relative bg-gray-100 min-h-screen flex" id="app">
+
         <nav class="flex w-16 bg-white shadow-lg fl-16 w-16ex flex-col items-center"></br>
 
             <span style="color: black;"><a href="/"><i class="fas fa-parking fa-3x"></i></a></span></br></br>
@@ -63,6 +62,19 @@ $valeur = session('id');
                 @endif
 
                     <span style="color: black;"><a href="/deconnexion"><i class="fas fa-sign-out-alt fa-2x"></i></a></span></br></br>
+
+
+        <nav class="flex w-16 bg-white shadow-lg fl-16 w-16ex flex-col items-center">
+            <a class="text-3xl font-black mt-2 mb-8" href="/">P</a>
+            @if ($valeur != NULL)
+
+                @if ($valeur != 'ADMIN')
+                   <a href="/user/@php echo $valeur@endphp"><img src="/img/user-1.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+
+                @else
+                  <a href="/s"><img src="/img/Allusers.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+                @endif
+                <a href="/deconnexion"><img src="/img/deco.png"class="h-8 w-8  cursor-pointer mb-10"></a>
 
             @endif
         </nav>

@@ -12,10 +12,20 @@
 */
 
 
+
+
 Route::get('/accueil', function () {
     return view('accueil');
 });
 
+
+
+
+
+
+Route::get('/ListeAttente', function () {
+    return view('ListeAttente');
+});
 
 
 Route::get('/connexion', function () {
@@ -33,7 +43,9 @@ Route::get('/subscription', function () {
 Route::post('/login','loginController@login');
 
 
+
 Route::get('/','ListeAttenteController@CheckPlace');
+
 
 Route::post('/inscription','RegisterController@register');
 
@@ -42,7 +54,9 @@ Route::get('/deconnexion','deconnexionController@deconnexion');
 Route::get('/user/{id}','PlaceController@numPlace')->middleware('LogAuth');
 
 
+
 Route::get('utilisateur', 'UserController@showUser');
+
 
 
 Route::get('s', 'UserController@showUser');
@@ -59,6 +73,7 @@ Route::get('supprimer/{id}', 'UserController@destroyinfo' );
 Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');
 });
+
 
 
 
@@ -83,13 +98,11 @@ Route::get('/useraccepte/{id}', 'ConfirmuserController@ModifyEtatuser');
 
 Route::get('/refuser/{id}', 'ConfirmuserserController@destroyinfo' );
 
-Route::post('/reservation/{id}', 'PlaceController@Reservation');
 
+Route::post('/reservation/{id}', 'PlaceController@Reservation');
 
 Route::post('/Cancelreservation/{id}', 'CancelReservationController@CancelReservation');
 
-
 Route::get('/ListeAttente/{id}', 'ListeAttenteController@InsertListeAttente');
-
 
 

@@ -67,7 +67,10 @@ class UserController extends BaseController
                 ->with('info', $info)
                 ->with('Name',$NameUtil)
                 ->with('check',$temp)
+
                 ->with('message',$message)
+
+
                 ->with('List',$ListeAttente);
         }
         else

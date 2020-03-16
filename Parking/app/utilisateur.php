@@ -9,7 +9,6 @@ class utilisateur extends Model
 
 
 
-    //
 
     /**
      * The table associated with the model.
@@ -34,6 +33,7 @@ class utilisateur extends Model
     public $incrementing = false;
 
 
+
     
 
     public function listeattente()
@@ -47,7 +47,6 @@ class utilisateur extends Model
      * @var string
      */
     protected $keyType = 'int';
-
 
 
     /**
