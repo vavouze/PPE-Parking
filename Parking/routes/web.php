@@ -19,10 +19,6 @@ Route::get('/accueil', function () {
 });
 
 
-
-
-
-
 Route::get('/ListeAttente', function () {
     return view('ListeAttente');
 });
@@ -36,6 +32,20 @@ Route::get('/connexion', function () {
 Route::get('/subscription', function () {
     return view('subscription');
 });
+
+
+
+Route::get('/ajoutPlace', function(){
+    return view('ajoutPlace');
+})-> middleware('LogAuth');
+
+Route::post('/traitementajoutPlace', 'listeplaceController@ajoutPlace')-> middleware('LogAuth');
+
+Route::get('/place', 'listeplaceController@place')-> middleware('LogAuth');
+
+Route::get('/deletePlace', 'listeplaceController@delete')-> middleware('LogAuth');
+
+Route::get('/showPlace', 'listeplaceController@show')-> middleware('LogAuth');
 
 
 
@@ -73,8 +83,6 @@ Route::get('supprimer/{id}', 'UserController@destroyinfo' );
 Route::get('/infoutilisateur', function () {
     return view('infoutilisateur');
 });
-
-
 
 
 

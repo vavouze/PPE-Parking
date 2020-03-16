@@ -51,6 +51,8 @@ $valeur = session('id');
                     <span style="color: black;"><a href="/confirmuser"><i class="fas fa-user-lock fa-2x"></i></a></span></br></br>
                     <span style="color: black;"><a href="/utilisateur"><i class="fas fa-users fa-2x"></i></a></span></br></br>
                     <span style="color: black;"><a href="/listeattente?etat=0&id=0"><i class="fas fa-list-ol fa-2x"></i></a></span></br></br>
+                    <span style="color: black;"><a href="/ajoutPlace"><i class="fas fa-car fa-2x"></i></a></span></br></br>
+                    <span style="color: black;"><a href="/place"><i class="fas fa-th-list fa-2x"></i></a></span></br></br>
 
 
 
