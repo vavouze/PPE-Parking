@@ -67,11 +67,11 @@ Route::get('/listedattentes', function () {
     return view('listeattente');
 });
 
-Route::get('/listeattente', 'listeattenteController@Showlisteattente');
+Route::get('/listeattente', 'listeAttenteController@Showlisteattente');
 
-Route::get('/suplisteattente/{id}', 'listeattenteController@destroylisteattente');
+Route::get('/suplisteattente/{id}', 'listeAttenteController@destroylisteattente');
 
-Route::post('/modifrang/{id}', 'listeattenteController@Modifyrang');
+Route::post('/modifrang/{id}', 'listeAttenteController@Modifyrang');
 
 Route::get('/confirmationuser', function () {
     return view('Confirmationutilisateur');
