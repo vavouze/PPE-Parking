@@ -93,8 +93,6 @@ $valeur = session('id');
 
         <form  action="/modifmdp/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
 
-        <form  action="/modif/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
-
           @csrf
           <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
@@ -104,19 +102,6 @@ $valeur = session('id');
               <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="mdp" type="password">
             </div>
 
-
-          </div>
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                Confirmation du mot de passe
-              </label>
-              <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="Cmdp" type="password">
-            </div>
-          </div>
-          <div class="flex items-center justify-center">
-            <input type='submit' value='modifier' name='modifer' id='submit' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          </div>
 
           </div>
           <div class="flex flex-wrap -mx-3 mb-6">
@@ -154,11 +139,7 @@ $valeur = session('id');
           <label class="block text-gray-700 text-sm font-bold mb-1 py+5 px-3 ">
 
             @php echo "<p>votre rang est : ".$List[0]->Rang." </p> <br />";@endphp
-
-        
-
-
-
+            
             <div class="text-center py-5">
               <button class="modal-cancel-open bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="toggleModalCancel()">
                 Annuler la demande
