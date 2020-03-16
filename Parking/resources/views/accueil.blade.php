@@ -45,14 +45,9 @@ $valeur = session('id');
             <span style="color: black;"><a href="/"><i class="fas fa-parking fa-3x"></i></a></span></br></br>
 
             @if ($valeur != NULL)
-
                 @if ($valeur != 'ADMIN')
-
                     <span style="color: black;"><a href="/user/@php echo $valeur@endphp"><i class="fas fa-user fa-2x"></i></a></span></br></br>
-
-
                 @else
-
                     <span style="color: black;"><a href="/confirmuser"><i class="fas fa-user-lock fa-2x"></i></a></span></br></br>
                     <span style="color: black;"><a href="/utilisateur"><i class="fas fa-users fa-2x"></i></a></span></br></br>
                     <span style="color: black;"><a href="/listeattente?etat=0&id=0"><i class="fas fa-list-ol fa-2x"></i></a></span></br></br>
@@ -61,21 +56,8 @@ $valeur = session('id');
 
                 @endif
 
+
                     <span style="color: black;"><a href="/deconnexion"><i class="fas fa-sign-out-alt fa-2x"></i></a></span></br></br>
-
-
-        <nav class="flex w-16 bg-white shadow-lg fl-16 w-16ex flex-col items-center">
-            <a class="text-3xl font-black mt-2 mb-8" href="/">P</a>
-            @if ($valeur != NULL)
-
-                @if ($valeur != 'ADMIN')
-                   <a href="/user/@php echo $valeur@endphp"><img src="/img/user-1.png"class="h-8 w-8  cursor-pointer mb-10"></a>
-
-                @else
-                  <a href="/s"><img src="/img/Allusers.png"class="h-8 w-8  cursor-pointer mb-10"></a>
-                @endif
-                <a href="/deconnexion"><img src="/img/deco.png"class="h-8 w-8  cursor-pointer mb-10"></a>
-
             @endif
         </nav>
         <div class="w-full flex flex-row">
@@ -85,3 +67,4 @@ $valeur = session('id');
 
         </div>
     </div>
+
