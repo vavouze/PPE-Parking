@@ -170,24 +170,13 @@ $valeur = session('id');
                 $newDate = date("d F Y", strtotime($originalDate));
 
                 echo "$newDate";@endphp
-
             </label>
 
-
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="Cmdp" type="password" required>
-          </div>
-
           @endif
-
-        </div>
-        <div class="mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-1 py+5 px-3 ">
-
             @if (isset($numPlace[0]->NumPlace))
-
               @php echo "<p>votre numéro de place est : ".$numPlace[0]->NumPlace." </p> <br />";@endphp
-
-
+            
               <div class="text-center py-5">
                 <button class="modal-cancel-open bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="toggleModalCancel()">
                   Annulation de réservation
