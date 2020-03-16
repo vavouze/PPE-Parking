@@ -8,6 +8,7 @@ $valeur = session('id');
 
 @endphp
 <div class="w-2/3 mx-auto">
+    <h1 class="font-hairline mb-6 text-center">Utlisateurs en attente de confirmation</h1>
   @if(empty($data[0]->Nom))
     <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
   @else

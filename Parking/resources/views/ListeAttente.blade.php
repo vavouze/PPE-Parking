@@ -9,6 +9,7 @@ $valeur = session('id');
 
 @endphp
 <div class="w-2/3 mx-auto">
+  <h1 class="font-hairline mb-6 text-center">Liste d'attente</h1>
   <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
   <div class="bg-white shadow-md rounded my-6 rounded-lg shadow-lg border-t-8 border-blue-200">
     <table class="text-left w-full border-collapse">
@@ -53,101 +54,10 @@ $valeur = session('id');
   </div>
 </div>
 
-@php
-/*
-<div class="modal-supprimer opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
-  <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-
-      <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
-        <a href="/s">
-        <svg class="fill-current text-white hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-        </svg>
-      </a>
-      </div>
-
-      <!-- Add margin if you want to see some of the overlay behind the modal-->
-      <div class="modal-content py-4 text-left px-6">
-        <!--Title-->
-        <div class="flex justify-between items-center pb-3">
-          <p class="text-2xl font-bold">Etes-vous sûr ?</p>
-          <div class="modal-close cursor-pointer z-50">
-            <a href="/s">
-            <svg class="fill-current text-black hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-            </svg></a>
-          </div>
-        </div>
-  <div class="flex justify-end pt-2">
-          <button class="px-4 bg-transparent p-3 rounded-lg text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" onclick="location.href='{{url('infoperso', $d->IDpersonne)}}'">Supprimer</button>
-          <button class="modal-close px-4 bg-blue-500 p-3 rounded-lg text-white hover:bg-blue-400" onclick="location.href='/s'">Annuler</button>
-        </div>
-
-      </div>
-    </div>
-</div>
-</body>
-
-
-<script>
-function supprimer(){
-  const body = document.querySelector('body')
-  const modal = document.querySelector('.modal-supprimer')
-  modal.classList.toggle('opacity-0')
-  modal.classList.toggle('pointer-events-none')
-  body.classList.toggle('modal-active')
-}
-</script>
-*/
-@endphp
-@stop
-
-    session_start();
-    $valeur = session('id');
-
-
-
-@endphp
-
-@if($check !=0)
-    <div class="container mx-auto h-full flex justify-center items-center">
-        <div class="w-1/3">
-            <h1 class="font-hairline mb-6 text-center">Vos Informations de réservation</h1>
-            <div class="rounded-lg  shadow-lg border-8 border-blue-400">
-
-                <div class="mb-4 items-center text-center">
-                    <label class="block text-red-700 text-sm font-bold mb-1 py-5 px-3">
-                        Vous avez été placé en liste d'attente
-                    </label>
-
-                </div>
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-1 py+5 px-3 ">
-
-                        @php echo "<p>votre numéro dans la fille est : ".$List[0]->Rang." </p> <br />";@endphp
-
-
-                        <div class="text-center py-5">
-                            <button class="modal-cancel-open bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="toggleModalCancel()">
-                                Page acceuil
-                            </button>
-                        </div>
-
-                    </label>
-                </div>
-
-
-            </div>
-        </div>
-
-
-    </div>
 
 
 
 
-@endif
 
 
 

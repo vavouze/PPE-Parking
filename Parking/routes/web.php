@@ -11,25 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-
-    return view('welcome');
-});
 
 Route::get('/accueil', function () {
     return view('accueil');
 });
 
-Route::get('/test', function () {
-    return view('test');
-});
-
-
-
-
-Route::get('/ListeAttente', function () {
-    return view('ListeAttente');
-});
 
 
 Route::get('/connexion', function () {
@@ -45,6 +31,9 @@ Route::get('/subscription', function () {
 
 
 Route::post('/login','loginController@login');
+
+
+Route::get('/','ListeAttenteController@CheckPlace');
 
 Route::post('/inscription','RegisterController@register');
 
@@ -99,9 +88,6 @@ Route::post('/reservation/{id}', 'PlaceController@Reservation');
 
 Route::post('/Cancelreservation/{id}', 'CancelReservationController@CancelReservation');
 
-
-
-Route::post('/Cancelreservation', 'CancelReservationController@CancelReservation');
 
 Route::get('/ListeAttente/{id}', 'ListeAttenteController@InsertListeAttente');
 

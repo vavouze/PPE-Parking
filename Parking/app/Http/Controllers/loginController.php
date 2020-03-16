@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\admin;
+use App\utilisateur;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use DB;
+
 
 class loginController extends BaseController
 {
     public function login(Request $req)
     {
       $username= $req->input('id');
-      $password= $req->input('motdepasse');
 
-      $checkLogin = DB::table('admin')->where(['IDAdmin'=>$username])->get();
+
+      $checkLogin = admin::where(['IDAdmin'=>$username])->get();
 
 
       if (count($checkLogin) > 0) {
@@ -26,7 +28,7 @@ class loginController extends BaseController
       }
       else
        {
-        $checkLog = DB::table('utilisateur')->where(['IDpersonne'=>$username])->get();
+        $checkLog = utilisateur::where(['IDpersonne'=>$username,'Etat'=>1])->get();
         if (count($checkLog) > 0) {
           $hash = $checkLog[0]->MotDePasse;
           $id = $checkLog[0]->IDpersonne;
@@ -45,9 +47,11 @@ class loginController extends BaseController
         return redirect($url)
             ->with('name');
       }
-      /*elseif (password_verify($_POST['motdepasse'], $hash1)){
-        session(['id' => $checkLogin1[0]->id]);
-        return redirect('/');
-      }*/
+      else
+
+          $messageLog = "Mot de passe incorrect";
+          return view('welcome')
+              ->with('message',$messageLog);
+
     }
 }

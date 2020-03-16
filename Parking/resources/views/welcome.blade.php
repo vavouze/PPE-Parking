@@ -51,7 +51,7 @@ $valeur = session('id');
 
 @else
 
-    <button class="bg-black hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"> USER : {{$valeur}}</button>
+    <span class="bg-black text-white font-bold py-2 px-4 rounded"> USER : {{$valeur}}</span>
     <div class='description'>
       <br><p class='texteAccueil'>Cette application web permet de gérer les places de parking.</p>
       <p class='texteAccueil'>Elle offre les services suivants :</p>

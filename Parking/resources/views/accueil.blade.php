@@ -41,31 +41,29 @@ $valeur = session('id');
 <body class="bg-grey-light h-screen font-sans">
 
 <div class="relative bg-gray-100 min-h-screen flex" id="app">
-        <nav class="flex w-16 bg-white shadow-lg fl-16 w-16ex flex-col items-center">
-            <a class="text-3xl font-black mt-2 mb-8" href="/">P</a>
+        <nav class="flex w-16 bg-white shadow-lg fl-16 w-16ex flex-col items-center"></br>
+
+            <span style="color: black;"><a href="/"><i class="fas fa-parking fa-3x"></i></a></span></br></br>
+
             @if ($valeur != NULL)
 
                 @if ($valeur != 'ADMIN')
-                   <a href="/user/@php echo $valeur@endphp"><img src="/img/user-1.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+
+                    <span style="color: black;"><a href="/user/@php echo $valeur@endphp"><i class="fas fa-user fa-2x"></i></a></span></br></br>
+
 
                 @else
 
-
-                  <span style="color: grey;"><a href="/confirmuser"><i class="fas fa-user-lock fa-2x"></i></a></span></br></br>
-                  <span style="color: grey;"><a href="/utilisateur"><i class="fas fa-users fa-2x"></i></a></span></br></br>
-                  <!--<a href="/utilisateur"><img src="/img/utilisateurs.png" class="h-8 w-8  cursor-pointer mb-10"></a>-->
-                  <span style="color: grey;"><a href="/listeattente?etat=0&id=0"><i class="fas fa-list-ol fa-2x"></i></a></span>
-
-                  <a href="/s"><img src="/img/utilisateurs.png"class="h-8 w-8  cursor-pointer mb-10"></a>
-
-                  <img src="" class="h-8 w-8 opacity-25  cursor-pointer" />-->
+                    <span style="color: black;"><a href="/confirmuser"><i class="fas fa-user-lock fa-2x"></i></a></span></br></br>
+                    <span style="color: black;"><a href="/utilisateur"><i class="fas fa-users fa-2x"></i></a></span></br></br>
+                    <span style="color: black;"><a href="/listeattente?etat=0&id=0"><i class="fas fa-list-ol fa-2x"></i></a></span></br></br>
 
 
-
-                  <a href="/s"><img src="/img/Allusers.png"class="h-8 w-8  cursor-pointer mb-10"></a>
 
                 @endif
-                <a href="/deconnexion"><img src="/img/deco.png"class="h-8 w-8  cursor-pointer mb-10"></a>
+
+                    <span style="color: black;"><a href="/deconnexion"><i class="fas fa-sign-out-alt fa-2x"></i></a></span></br></br>
+
             @endif
         </nav>
         <div class="w-full flex flex-row">

@@ -105,31 +105,33 @@ $valeur = session('id');
         <div class="w-1/2 mx-auto">
             <h1 class="font-hairline mb-6 text-center">Vos dernières réservations</h1>
             <div class="bg-white shadow-md rounded my-6 rounded-lg  border-t-8 border-blue-200">
-                <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-                    <thead>
-                    <tr>
-                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Numéro Place</th>
-                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Début</th>
-                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Fin</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                    <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
+                        <thead class="flex w-full">
+                        <tr class="flex w-full">
+                            <th class="p-4 w-1/3 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Numéro Place</th>
+                            <th class="p-4 w-1/3 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Début</th>
+                            <th class="p-4 w-1/3 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Date Fin</th>
+                        </tr>
+                        </thead>
 
-                    @foreach($ListePlace as $key)
 
-                        @php
-                            $newDateR = date("d F Y", strtotime($key->DateReservation));
-                            $newDateExp = date("d F Y", strtotime($key->DateExpiration));
-                        @endphp
+                            <tbody class="flex flex-col items-center overflow-y-auto h-64 w-full">
 
-                    <tr class="hover:bg-grey-lighter">
-                        <td class="py-4 px-6 border-b border-grey-light">Place : {{$key->NumPlace}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$newDateR}}</td>
-                        <td class="py-4 px-6 border-b border-grey-light">{{$newDateExp}}</td>
-                    </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                            @foreach($ListePlace as $key)
+
+                                @php
+                                    $newDateR = date("d F Y", strtotime($key->DateReservation));
+                                    $newDateExp = date("d F Y", strtotime($key->DateExpiration));
+                                @endphp
+
+                                <tr class="hover:bg-grey-lighter flex w-full">
+                                    <td class="p-4 w-1/3 border-b border-grey-light">Place : {{$key->NumPlace}}</td>
+                                    <td class="p-4 w-1/3 border-b border-grey-light">{{$newDateR}}</td>
+                                    <td class="p-4 w-1/3 border-b border-grey-light">{{$newDateExp}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                    </table>
             </div>
         </div>
     @endif

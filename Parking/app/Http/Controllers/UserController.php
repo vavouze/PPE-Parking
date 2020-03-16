@@ -26,10 +26,19 @@ class UserController extends BaseController
         ->with('data', $data);
     }
     //afficher les info perso d'un seul utilisateur
+
+
     public function showInfo(Request $req, $id)
     {
         $info = utilisateur::where(['IDpersonne' => $id])
                   ->get();
+
+
+        if (!empty($_GET['message']))
+            $message = $_GET['message'];
+        else
+            $message = "";
+
 
         if(isset($info[0]->IDpersonne))
         {
@@ -58,12 +67,13 @@ class UserController extends BaseController
                 ->with('info', $info)
                 ->with('Name',$NameUtil)
                 ->with('check',$temp)
+                ->with('message',$message)
                 ->with('List',$ListeAttente);
         }
         else
         {
           $message="Cet utilisateur n'existe pas !";
-          return view('infoutilisateur')
+          return view('infoUtilisateur')
                     ->with('message', $message);
         }
 
@@ -71,31 +81,32 @@ class UserController extends BaseController
     //modifier les infos de l'utilisateur
     public function modifyInfoPerso(Request $req, $id)
     {
-      $info = $req->input();
+          $info = $req->input();
 
-      $testUsername = utilisateur::find($info['username']);
-      if (isset($testUsername) && $info['username'] === $testUsername['IDpersonne'] && $info['username'] ==! $id)
-      {
-        $message = "Ce nom d'utilisateur est déjà utilisé !";
-      }
-      else
-      {
-        utilisateur::where('IDpersonne', $id)
+
+          utilisateur::where('IDpersonne', $id)
                   ->update(['Nom'=> $info['nom'],
                             'Prenom'=> $info['prenom'],
-                            'IDpersonne'=> $info['username'],
                             'Tel'=> $info['telephone'],
                             'AdRue'=> $info['adrue'],
                             'CP'=> $info['cp'],
                             'Ville'=> $info['ville'],
                             'Mail'=> $info['mail']
                             ]);
+
+
+
         $message ="l'utilisateur ".$info['nom']." ".$info['prenom']." à bien été modifié !";
-      }
+
+
+
         $info = utilisateur::where('IDpersonne',$id)->get();
-        return view('infoutilisateur')
+
+        /*return view('infoUtilisateur')
           ->with('message', $message)
-          ->with('info', $info);
+          ->with('info', $info);*/
+
+        return redirect()->action('UserController@showInfo', ['id' => $id ,'message'=>$message]);
 
 
 
@@ -118,18 +129,16 @@ class UserController extends BaseController
 
         $message ="Le mot de passe de l'utilisateur ".$info[0]->Nom." ".$info[0]->Prenom." à bien été modifié !";
 
-        return view('infoutilisateur')
-        ->with('message', $message)
-        ->with('info', $info);
       }
       else
       {
         $message ="Il semblerait que les mots de passe soient différents !";
 
-        return view('infoutilisateur')
-        ->with('message', $message)
-        ->with('info', $info);
       }
+
+      return redirect()->action('UserController@showInfo', ['id' => $id ,'message'=>$message]);
+
+
     }
 
     //supprimer un utilisateur

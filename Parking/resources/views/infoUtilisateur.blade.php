@@ -38,13 +38,7 @@ $valeur = session('id');
           </div>
         </div>
         <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-              Nom d'utilisateur
-            </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" value="{{$info[0]->IDpersonne ?? ''}}" id="grid-first-named" name="username" type="text" requireds>
-          </div>
-          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <div class="w-full px-3">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
               Téléphone
             </label>
@@ -89,27 +83,13 @@ $valeur = session('id');
   </div>
 
 
-
-  <div class="w-1/3 mx-auto">
-    <h1 class="font-hairline mb-6 text-center">Modification du mot de passe</h1>
-    <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
-      <form  action="/modifmdp/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
-        @csrf
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-              Mot de passe
-            </label>
-            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="mdp" type="password" required>
-
-
     <div class="w-1/3 mx-auto" style="
     position: relative;
     bottom: 22%;
     left: 20%;">
       <h1 class="font-hairline mb-6 text-center">Modification du mot de passe</h1>
       <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
-        <form  action="/modif/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
+        <form  action="/modifmdp/@php echo$info[0]->IDpersonne@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
           @csrf
           <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
@@ -152,7 +132,7 @@ $valeur = session('id');
         </div>
         <div class="mb-6">
           <label class="block text-gray-700 text-sm font-bold mb-1 py+5 px-3 ">
-            @php echo "<p>votre numéro de place est : ".$List[0]->Rang." </p> <br />";@endphp
+            @php echo "<p>votre rang est : ".$List[0]->Rang." </p> <br />";@endphp
 
 
             <div class="text-center py-5">
