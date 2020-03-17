@@ -155,6 +155,8 @@ class UserController extends BaseController
                 ->get();
       $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été supprimé";
 
+      listeattente::where('IDpersonne', $id)->delete();
+      reservation::where('IDpersonne', $id)->delete();
       utilisateur::find($id)->delete();
 
       $data = utilisateur::orderBy('Nom')->get();
