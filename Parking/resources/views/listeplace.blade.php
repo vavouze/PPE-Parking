@@ -25,9 +25,12 @@
                     <td class="py-4 px-6 border-b border-grey-light text-center"> <?= $place->NumPlace ?> </td>
                     <td class="py-4 px-6 border-b border-grey-light text-center"> <?= $place->Etat ?> </td>
                     <td class="py-4 px-6 border-b border-grey-light text-center">
+
                         @php $numplace = $place->NumPlace; @endphp
-                        <a href='/showPlace?numP=@php echo$numplace;@endphp' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Consulter</a>
-                        <a href='/deletePlace?numP=@php echo$numplace;@endphp' class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">Supprimer</a>
+                        <span style="color: dodgerblue;"><a href="/showPlace?numP=@php echo$numplace;@endphp"><i class="fas fa-clipboard-list fa-lg mr-8"></i></a></span>
+                        <span style="color: red;"><a href="/deletePlace?numP=@php echo$numplace;@endphp"><i class="fas fa-times-circle fa-lg"></i></a></span>
+
+                    </td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>

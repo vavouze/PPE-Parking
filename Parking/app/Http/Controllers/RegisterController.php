@@ -37,7 +37,7 @@ class RegisterController extends BaseController
         $newUtilisateur->Ville = $data['ville'];
         $newUtilisateur->adRue = $data['adresse'];
         $newUtilisateur->Mail = $data['mail'];
-        $newUtilisateur->Etat = 1;
+        $newUtilisateur->Etat = 0;
         $newUtilisateur->idLigue = $idLigue[0]->NumLigue;
 
 

@@ -102,7 +102,7 @@ Route::get('/confirmuser', 'ConfirmuserController@showUser');
 
 Route::get('/useraccepte/{id}', 'ConfirmuserController@ModifyEtatuser');
 
-Route::get('/refuser/{id}', 'ConfirmuserserController@destroyinfo' );
+Route::get('/refuser/{id}', 'ConfirmuserController@destroyinfo' );
 
 
 Route::post('/reservation/{id}', 'PlaceController@Reservation');
