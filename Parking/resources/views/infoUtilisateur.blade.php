@@ -17,6 +17,7 @@ $valeur = session('id');
 <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
 @else
 <p class="text-2xl font-bold text-red-600 text-center">{{$message ?? ''}}</p>
+
 <div class="container mx-auto h-full flex justify-center items-center">
   <div class="w-1/3 mx-auto">
     <h1 class="font-hairline mb-6 text-center">Modification des informations personnelles</h1>
@@ -82,8 +83,6 @@ $valeur = session('id');
     </div>
   </div>
 
-
-
     <div class="w-1/3 mx-auto" style="
     position: relative;
     bottom: 22%;
@@ -119,6 +118,7 @@ $valeur = session('id');
         </form>
       </div>
     </div>
+
 
   @if($check !=0)
     <div class="w-1/3" style="

@@ -139,7 +139,11 @@ class UserController extends BaseController
 
       }
 
-      return redirect()->action('UserController@showInfo', ['id' => $id ,'message'=>$message]);
+      if (session('id') === 'ADMIN')
+          return redirect()->action('UserController@showInfo', ['id' => $id ,'message'=>$message]);
+      else
+          return redirect()->action('PlaceController@numPlace', ['id' => $id,'message'=>$message]);
+
 
 
     }

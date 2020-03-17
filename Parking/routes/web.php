@@ -35,9 +35,7 @@ Route::get('/subscription', function () {
 
 
 
-Route::get('/ajoutPlace', function(){
-    return view('ajoutPlace');
-})-> middleware('LogAuth');
+
 
 Route::post('/traitementajoutPlace', 'listeplaceController@ajoutPlace')-> middleware('LogAuth');
 

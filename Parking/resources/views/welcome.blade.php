@@ -47,8 +47,6 @@ $valeur = session('id');
   </div>
 </div>
 
-
-
 @else
 
     <span class="bg-black text-white font-bold py-2 px-4 rounded"> USER : {{$valeur}}</span>
@@ -61,4 +59,8 @@ $valeur = session('id');
       </ul>
    </div>
 @endif
+
+
+
+
 @stop

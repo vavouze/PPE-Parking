@@ -15,7 +15,7 @@ use App\Place;
 class PlaceController extends BaseController
 {
 
-    function numPlace(Request $request) {
+    function numPlace(Request $request,$id) {
         $value = $request->session()->get('id');
 
         $PlaceActuelle = Reservation::where('IDpersonne', $value)
@@ -44,11 +44,17 @@ class PlaceController extends BaseController
 
         }
 
+        if (!empty($_GET['message']))
+            $message = $_GET['message'];
+        else
+            $message = "";
+
         return view('user')
             ->with('numPlace',$PlaceActuelle)
             ->with('ListePlace',$ListePlace)
             ->with('Name',$NameUtil)
             ->with('check',$temp)
+            ->with('message',$message)
             ->with('List',$ListeAttente);
 
 

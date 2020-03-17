@@ -15,7 +15,6 @@ $valeur = session('id');
 
 <div class="container mx-auto h-full flex justify-center items-center">
 @if($check !=0)
-
         <div class="w-1/3">
             <h1 class="font-hairline mb-6 text-center">Vos Informations de réservation</h1>
             <div class=" bg-white rounded-lg  shadow-lg border-8 border-blue-400">
@@ -48,7 +47,10 @@ $valeur = session('id');
 @else
 
 
-    <div class="w-1/3">
+    <div class="w-1/3"style="
+    position: relative;
+    top:28%;
+    left: 8.8%;">
         <h1 class="font-hairline mb-6 text-center">Vos Informations de réservation</h1>
         <div class="bg-white rounded-lg shadow-lg border-t-8 border-blue-200">
 
@@ -97,12 +99,51 @@ $valeur = session('id');
         </div>
     </div>
     @endif
+    <div class="w-1/3 mx-auto" style="
+    position: relative;
+    bottom: 25%;
+    right: 20%;">
+        <h1 class="font-hairline mb-6 text-center">Modification du mot de passe</h1>
+        <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
+            <form  action="/modifmdp/@php echo$valeur@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
+
+                @csrf
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            Mot de passe
+                        </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="mdp" type="password">
+                    </div>
+
+
+                </div>
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            Confirmation du mot de passe
+                        </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" name="Cmdp" type="password">
+                    </div>
+                </div>
+                <div class="flex items-center justify-center">
+                    <input type='submit' value='modifier' name='modifer' id='submit' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                </div>
+
+            </form>
+        </div>
+    </div>
 
 
 
 
     @if(count($ListePlace)>0)
-        <div class="w-1/2 mx-auto">
+        <div class="w-1/2 mx-auto" >
+            @if(!empty($message))
+                <div class="rounded-lg shadow-lg border-t-8 border-red-400 mb-16 ">
+                    <h1 class="font-hairline text-red-600 font-bold mb-8 mr-4 ml-4 text-center">{{$message ?? ''}}</h1>
+                </div>
+            @endif
             <h1 class="font-hairline mb-6 text-center">Vos dernières réservations</h1>
             <div class="bg-white shadow-md rounded my-6 rounded-lg  border-t-8 border-blue-200">
                     <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->

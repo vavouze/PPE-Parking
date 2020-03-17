@@ -18,6 +18,11 @@ class listeplaceController extends Controller
     {
         $places = Place::all();
 
+        if (!empty($_GET['message']))
+            $message = $_GET['message'];
+        else
+            $message = "";
+
         foreach($places as $place)
         {
             if ($place->Etat == 0)
@@ -28,7 +33,8 @@ class listeplaceController extends Controller
 
 
         return view('listeplace')
-            ->with('places', $places);
+            ->with('places', $places)
+            ->with('message', $message);
 
 
     }
@@ -76,31 +82,35 @@ class listeplaceController extends Controller
     public function ajoutPlace(Request $req)
     {
         $numPlace = $req->input('NumPlace');
-        $etat = $req->input('etat');
         $places = Place::all();
 
-        if($numPlace == NULL || $etat == NULL)
-        {
-            $message = 'Tous les champs sont requis';
-            return view('ajoutPlace')
-                ->with('message', $message);
-        }
 
-        foreach($places as $place)
+
+        if($numPlace === NULL)
         {
-            if($place->NumPlace == $numPlace)
+
+            $message = 'Tous les champs sont requis';
+            return redirect()->action('listeplaceController@place', ['message'=>$message]);
+        }
+        else
+        {
+            foreach($places as $place)
             {
-                $message = 'La place numero '.$place->NumPlace.' existe déjà';
-                return view('ajoutPlace')
-                    ->with('message', $message);
+                if($place->NumPlace == $numPlace)
+                {
+                    $message = 'La place numero '.$place->NumPlace.' existe déjà';
+                    return redirect()->action('listeplaceController@place', ['message'=>$message]);;
+                }
+
             }
 
+            Place::insert(
+                ['numPlace'=>$numPlace,'Etat'=> 0]
+            );
+
+            return redirect('place');
         }
 
-        Place::insert(
-            ['numPlace'=>$numPlace , 'Etat'=>$etat]
-        );
 
-        return redirect('place');
     }
 }

@@ -44,20 +44,16 @@ $valeur = session('id');
 
             <span style="color: black;"><a href="/"><i class="fas fa-parking fa-3x"></i></a></span></br></br>
 
-            @if ($valeur != NULL)
-                @if ($valeur != 'ADMIN')
+            @if ($valeur !== NULL)
+                @if ($valeur !== 'ADMIN')
                     <span style="color: black;"><a href="/user/@php echo $valeur@endphp"><i class="fas fa-user fa-2x"></i></a></span></br></br>
                 @else
                     <span style="color: black;"><a href="/confirmuser"><i class="fas fa-user-lock fa-2x"></i></a></span></br></br>
                     <span style="color: black;"><a href="/utilisateur"><i class="fas fa-users fa-2x"></i></a></span></br></br>
                     <span style="color: black;"><a href="/listeattente?etat=0&id=0"><i class="fas fa-list-ol fa-2x"></i></a></span></br></br>
-                    <span style="color: black;"><a href="/ajoutPlace"><i class="fas fa-car fa-2x"></i></a></span></br></br>
                     <span style="color: black;"><a href="/place"><i class="fas fa-th-list fa-2x"></i></a></span></br></br>
 
-
-
                 @endif
-
 
                     <span style="color: black;"><a href="/deconnexion"><i class="fas fa-sign-out-alt fa-2x"></i></a></span></br></br>
             @endif
@@ -65,6 +61,8 @@ $valeur = session('id');
         <div class="w-full flex flex-row">
             <div class="w-full p-6">
               @yield('nav')
+            @yield('teste')
+
             </div>
 
         </div>
