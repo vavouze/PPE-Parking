@@ -39,6 +39,8 @@ Route::get('/subscription', function () {
 
 Route::post('/traitementajoutPlace', 'listeplaceController@ajoutPlace')-> middleware('LogAuth');
 
+Route::post('/CreateLigue', 'LigueController@CreateLigue')-> middleware('LogAuth');
+
 Route::get('/place', 'listeplaceController@place')-> middleware('LogAuth');
 
 Route::get('/deletePlace', 'listeplaceController@delete')-> middleware('LogAuth');
@@ -89,6 +91,8 @@ Route::get('/listedattentes', function () {
 });
 
 Route::get('/listeattente', 'listeAttenteController@Showlisteattente');
+
+Route::get('/ListeLigue', 'LigueController@ShowListeLigue');
 
 Route::get('/suplisteattente/{id}', 'listeAttenteController@destroylisteattente');
 
