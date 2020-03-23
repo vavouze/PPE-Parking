@@ -53,8 +53,12 @@ Route::get('/showPlace', 'listeplaceController@show')-> middleware('LogAuth');
 Route::post('/login','loginController@login');
 
 
-
+/*
 Route::get('/','ListeAttenteController@CheckPlace');
+*/
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::post('/inscription','RegisterController@register');

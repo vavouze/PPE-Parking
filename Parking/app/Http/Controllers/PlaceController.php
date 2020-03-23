@@ -18,28 +18,26 @@ class PlaceController extends BaseController
     function numPlace(Request $request,$id) {
         $value = $request->session()->get('id');
 
-        $PlaceActuelle = Reservation::where('IDpersonne', $value)
+        $PlaceActuelle = Reservation::where('IDpersonne', $id)
             ->where('Fin', 'n')
             ->get();
 
 
-        $ListePlace = Reservation::where('IDpersonne', $value)
+        $ListePlace = Reservation::where('IDpersonne', $id)
             ->get();
 
 
-        $NameUtil = utilisateur::find($value);
+        $NameUtil = utilisateur::find($id);
 
 
         /* récupération du rang de la file d'attente */
 
         $temp = 0;
 
-        $ListeAttente = ListeAttente::where('IDpersonne', $value)->get();
+        $ListeAttente = utilisateur::where('IDpersonne', $id)->get();
 
 
-        $occurList = count($ListeAttente);
-
-        if ($occurList != 0){
+        if ($ListeAttente[0]->Rang != null){
             $temp = 1;
 
         }

@@ -19,10 +19,9 @@ class ListeAttenteController extends BaseController
     {
         $etat = $_GET['etat'];
         $id = $_GET['id'];
-        $liste = ListeAttente::join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
-            ->orderBy('listeattente.Rang')
+        $liste = utilisateur::where('Rang','!=',null)
+            ->orderBy('Rang')
             ->get();
-        //$liste->SortBy("$liste->listeattente['Rang']")->values()->all();
 
         return view('ListeAttente')
             ->with('listeattente', $liste)
@@ -33,31 +32,30 @@ class ListeAttenteController extends BaseController
     public function Modifyrang(Request $req, $id)
     {
         $rang = $req->input('rang');
-        $rangdepart = ListeAttente::select('listeattente.Rang')
-            ->where('listeattente.IDpersonne', $id)
-            ->join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
-            ->orderBy('listeattente.Rang')
+
+        $rangdepart = utilisateur::where('IDpersonne','=',$id)->get();
+
+
+        $RangOccupe = utilisateur::where('Rang','=',$rang)
             ->get();
-        $Nompersrangvoulu = ListeAttente::select('listeattente.Rang','Nom', 'Prenom')
-            ->where('listeattente.Rang', $rang)
-            ->join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
-            ->orderBy('listeattente.Rang')
-            ->get();
-        if(isset($Nompersrangvoulu[0]->Rang))
+
+
+        if(isset($RangOccupe[0]))
         {
-            $saveid1 = ListeAttente::find($Nompersrangvoulu[0]->Rang);
-            $saveid1->Rang = 100;
+
+            $saveid1 = utilisateur::find($RangOccupe[0]->IDpersonne);
+            $saveid1->Rang = $rangdepart[0]->Rang;
             $saveid1->save();
-            $saveid = ListeAttente::find($rangdepart[0]->Rang);
+
+            $saveid = utilisateur::find($rangdepart[0]->IDpersonne);
             $saveid->Rang = $rang;
             $saveid->save();
-            $saveid = ListeAttente::find(100);
-            $saveid->Rang = $rangdepart[0]->Rang;
-            $saveid->save();
+
         }
         else
         {
-            $saveid = ListeAttente::find($rangdepart[0]->Rang);
+
+            $saveid = utilisateur::find($rangdepart[0]->IDpersonne);
             $saveid->Rang = $rang;
             $saveid->save();
         }
@@ -70,9 +68,12 @@ class ListeAttenteController extends BaseController
             ->get();
         $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été retiré de la liste d'attente !";
 
-        ListeAttente::where('IDpersonne', $id)->delete();
-        $liste = ListeAttente::join('utilisateur', 'listeattente.IDpersonne', '=', 'utilisateur.IDpersonne')
-            ->orderBy('listeattente.Rang')
+        $SupListe = utilisateur::find($id);
+        $SupListe->Rang = null;
+        $SupListe->save();
+
+        $liste = utilisateur::where('Rang','!=',null)
+            ->orderBy('Rang')
             ->get();
         return view('ListeAttente')
             ->with('listeattente', $liste)
@@ -87,14 +88,17 @@ class ListeAttenteController extends BaseController
         $value = $req->session()->get('id');
 
 
-        $NbListeAttente = DB::table('listeattente')
-            ->select('*')
+
+
+        $NbListeAttente = utilisateur::where('Rang','!=',null )
             ->get();
 
+        $Liste = utilisateur::find($id);
+        $Liste->Rang = count($NbListeAttente) + 1;
+        $Liste->save();
 
-        DB::table('listeattente')->insert(
-            ['Rang' => count($NbListeAttente) + 1,  'IDpersonne' => $id]
-        );
+
+
         if ($value === 'ADMIN')
             return redirect("/infoperso/$id");
         else

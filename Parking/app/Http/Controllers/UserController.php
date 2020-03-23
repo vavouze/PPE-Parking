@@ -33,44 +33,32 @@ class UserController extends BaseController
         $info = utilisateur::where(['IDpersonne' => $id])
                   ->get();
 
-
         if (!empty($_GET['message']))
             $message = $_GET['message'];
         else
             $message = "";
-
 
         if(isset($info[0]->IDpersonne))
         {
             $PlaceActuelle = Reservation::where('IDpersonne', $id)
                 ->where('Fin', 'n')
                 ->get();
-
             $NameUtil = utilisateur::find($id);
 
 
             $temp = 0;
 
-            $ListeAttente = ListeAttente::where('IDpersonne', $id)->get();
+            $ListeAttente = utilisateur::where('IDpersonne', $id)->get();
 
-
-            $occurList = count($ListeAttente);
-
-            if ($occurList != 0){
+            if ($ListeAttente[0]->Rang != null){
                 $temp = 1;
-
             }
-
-
             return view('infoutilisateur')
                 ->with('numPlace',$PlaceActuelle)
                 ->with('info', $info)
                 ->with('Name',$NameUtil)
                 ->with('check',$temp)
-
                 ->with('message',$message)
-
-
                 ->with('List',$ListeAttente);
         }
         else
@@ -155,7 +143,6 @@ class UserController extends BaseController
                 ->get();
       $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été supprimé";
 
-      listeattente::where('IDpersonne', $id)->delete();
       reservation::where('IDpersonne', $id)->delete();
       utilisateur::find($id)->delete();
 

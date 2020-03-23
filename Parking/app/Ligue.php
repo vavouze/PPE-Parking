@@ -13,7 +13,7 @@ class Ligue extends Model
      *
      * @var string
      */
-    protected $table = 'ligue';
+    protected $table = 'ligues';
 
     /**
      * The primary key associated with the table.

@@ -17,10 +17,8 @@ class ReservationController extends BaseController
     public function ReservationAdmin(Request $req, $id)
     {
 
-
         $Date_debut= $req->input('date_deb');
         $Date_Fin = date('Y-m-d ', strtotime($Date_debut . ' +7 day'));
-
 
         $PlaceDisp= Place::where('Etat',0)->get();
 
@@ -44,9 +42,6 @@ class ReservationController extends BaseController
 
             $randomind = array_rand($arr);
             $randomPlace = $arr[$randomind]->NumPlace;
-
-
-
 
 
             $newReservation = new Reservation();

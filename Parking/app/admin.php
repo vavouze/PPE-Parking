@@ -11,7 +11,7 @@ class admin extends Model
      *
      * @var string
      */
-    protected $table = 'admin';
+    protected $table = 'admins';
 
     /**
      * The primary key associated with the table.
