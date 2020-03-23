@@ -33,7 +33,9 @@ Route::get('/subscription', function () {
     return view('subscription');
 });
 
-
+Route::get('/motdepasseoublie', function () {
+    return view('Motdepasseoublie');
+});
 
 
 
@@ -111,4 +113,4 @@ Route::post('/Cancelreservation/{id}', 'CancelReservationController@CancelReserv
 
 Route::get('/ListeAttente/{id}', 'ListeAttenteController@InsertListeAttente');
 
-
+Route::post('/mdp', 'MotdepasseoublieController@Motdepasseoublie');
