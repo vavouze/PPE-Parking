@@ -3,6 +3,11 @@
 
 <div class="container mx-auto h-full flex justify-center items-center">
     <div class="w-1/3">
+        @if(!empty($message))
+            <div class="rounded-lg shadow-lg border-t-8 border-red-400 mb-8 ">
+                <h1 class="font-hairline text-red-600 font-bold mb-8 mr-4 ml-4 text-center">{{$message ?? ''}}</h1>
+            </div>
+        @endif
         <h1 class="font-hairline mb-6 text-center">Register to our Website</h1>
         <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
             <form action="/inscription" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

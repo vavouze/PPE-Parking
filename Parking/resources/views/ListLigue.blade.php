@@ -8,6 +8,11 @@
 
     <div class="container mx-auto h-full flex justify-center items-center">
         <div class="w-2/4 mx-auto">
+            @if(!empty($message))
+                <div class="rounded-lg shadow-lg border-t-8 border-red-400 mb-8 ">
+                    <h1 class="font-hairline text-red-600 font-bold mb-8 mr-4 ml-4 text-center">{{$message ?? ''}}</h1>
+                </div>
+            @endif
             <h1 class="font-hairline mb-6 text-center">Liste des Ligues</h1>
             <div class="bg-white shadow-md rounded my-6 rounded-lg shadow-lg border-t-8 border-blue-200">
                 <table  class="text-left w-full border-collapse">
@@ -19,6 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     <?php foreach( $ligues as $ligue): ?>
                     <tr class="hover:bg-grey-lighter">
                         <td class="py-4 px-6 border-b border-grey-light text-center"> <?= $ligue->Nom ?> </td>
@@ -27,11 +33,12 @@
 
                             @php /*$numplace = $place->NumPlace; */@endphp
                             <span style="color: dodgerblue;"><a href="/showPlace?numP=@php /*echo$numplace;*/@endphp"><i class="fas fa-clipboard-list fa-lg mr-8"></i></a></span>-->
-                            <span style="color: red;"><a href="/deleteligue?numP=@php echo $ligue->NumLigue@endphp"><i class="fas fa-times-circle fa-lg"></i></a></span>
+                            <span style="color: red;"><a href="/deleteligue/@php echo $ligue->NumLigue@endphp"><i class="fas fa-times-circle fa-lg"></i></a></span>
 
                         </td>
                     </tr>
                     <?php endforeach; ?>
+
                     </tbody>
                 </table>
             </div>

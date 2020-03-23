@@ -137,7 +137,7 @@ class UserController extends BaseController
     }
 
     //supprimer un utilisateur
-    public function destroyinfo( Request $req, $id)
+    public function destroyinfo($id)
     {
       $info = utilisateur::where(['IDpersonne' => $id])
                 ->get();

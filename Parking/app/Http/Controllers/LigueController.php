@@ -15,6 +15,22 @@ use App\Utilisateur;
 class LigueController extends Controller
 {
 
+    public function Deleteligue($numligue){
+
+        $AllUserLigue = utilisateur::where('idLigue',$numligue)->get();
+        $ligue = Ligue::where('NumLigue',$numligue)->get();
+
+        foreach ($AllUserLigue   as $Userinligue){
+            app('App\Http\Controllers\UserController')->destroyinfo($Userinligue->IDpersonne);
+        }
+        $message = 'la ligue'.$ligue[0]->Nom.'à bien été supprimé ainsi que tout ses membres';
+        Ligue::where('NumLigue',$numligue)->delete();
+
+        return redirect('/ListeLigue');
+
+
+    }
+
     public function ShowListeLigue()
     {
         $ligues = Ligue::all();
