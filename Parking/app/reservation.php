@@ -12,7 +12,7 @@ class Reservation extends Model
      *
      * @var string
      */
-    protected $table = 'reservation';
+    protected $table = 'reservations';
 
     /**
      * The primary key associated with the table.

@@ -15,7 +15,9 @@ $valeur = session('id');
 
 <div class="container mx-auto h-full flex justify-center items-center">
 @if($check !=0)
-        <div class="w-1/3">
+        <div class="w-1/3"style="position: relative;
+    top:28%;
+    left: 8.8%;">
             <h1 class="font-hairline mb-6 text-center">Vos Informations de réservation</h1>
             <div class=" bg-white rounded-lg  shadow-lg border-8 border-blue-400">
 

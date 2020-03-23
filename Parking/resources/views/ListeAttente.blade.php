@@ -30,7 +30,7 @@ $valeur = session('id');
                   <td class="py-4 px-6 border-b border-grey-light text-center"> {{$liste->Prenom ?? ''}}</td>
                   <td class="py-4 px-6 border-b border-grey-light text-center">
                      <button onclick="location.href='/listeattente?etat=@php echo$etat=TRUE;@endphp&id=@php echo$liste->IDpersonne;@endphp'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Modifier</button>
-                     <button  class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('destroy', $liste->IDpersonne)}}'" >Supprimer</button>
+                     <button  class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('suplisteattente', $liste->IDpersonne)}}'" >Supprimer</button>
                   </td>
                   @if($etat === TRUE && $liste->IDpersonne === $id)
                     <tr class="hover:bg-grey-lighter">

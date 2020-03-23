@@ -3,6 +3,9 @@
 
 namespace App\Http\Controllers;
 use function App\Http\Modele\numPlace;
+use App\Place;
+use App\Reservation;
+use App\utilisateur;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -16,43 +19,37 @@ class CancelReservationController extends BaseController
 
         $value = $req->session()->get('id');
 
-        $FileOccur = DB::table('listeattente')
-            ->select('IDpersonne')
-            ->where(['IDpersonne' =>$id])
+        $FileOccur = utilisateur::where(['IDpersonne' =>$id])
             ->get();
 
-        $occur = count($FileOccur);
 
-        if ($occur != 0){
 
-            DB::table('listeattente')
-                ->where(['IDpersonne'=>$id])
-                ->delete();
+        if ($FileOccur[0]->Rang != null){
+
+
+            $Liste = utilisateur::find($id);
+            $Liste->Rang = null;
+            $Liste->save();
 
         }
         else
         {
-            $Place = DB::table('reservation')
-                ->join('utilisateur', 'reservation.IDpersonne', '=', 'utilisateur.IDpersonne')
-                ->select('reservation.NumPlace','reservation.DateReservation')
-                ->where(['utilisateur.IDpersonne' =>$id])
-                ->get();
 
+            $Place = Reservation::where('IDpersonne','=',$id)->get();
 
             $arr = [];
             foreach ($Place as $key) {
                 $arr[] = $key;
             }
 
-
-
-            DB::table('reservation')
-                ->where(['IDpersonne'=>$id])
+            Reservation::where('IDpersonne','=',$id)
                 ->update(['Fin' => 'o']);
 
-            DB::table('place')
-                ->where('NumPlace', $arr[0]->NumPlace)
-                ->update(['etat' => 0]);
+
+            $ResetPlace = Place::find($arr[0]->NumPlace);
+            $ResetPlace->Etat = 0;
+            $ResetPlace->save();
+
         }
 
 

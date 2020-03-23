@@ -12,7 +12,7 @@ class Place extends Model
      *
      * @var string
      */
-    protected $table = 'place';
+    protected $table = 'places';
 
     /**
      * The primary key associated with the table.

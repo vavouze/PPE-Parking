@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLigueTables extends Migration
+class CreatePlace extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,15 @@ class CreateLigueTables extends Migration
      */
     public function up()
     {
-        Schema::table('ligue', function (Blueprint $table) {
-            $table->string('Nom');
+        Schema::create('Places', function (Blueprint $table) {
+            $table->integer('NumPlace');
+            $table->integer('Etat');
+
+
+        });
+
+        Schema::table('Places',function (Blueprint $table) {
+            $table->primary('NumPlace');
         });
     }
 
@@ -25,8 +32,6 @@ class CreateLigueTables extends Migration
      */
     public function down()
     {
-        Schema::table('ligue', function (Blueprint $table) {
-            $table->string('Nom');
-        });
+        Schema::dropIfExists('Places');
     }
 }

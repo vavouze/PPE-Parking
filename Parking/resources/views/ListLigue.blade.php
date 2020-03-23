@@ -46,7 +46,7 @@
                     <h1 class="font-bold mb-6 text-center text-red-700" >{{$message ?? ''}}</h1>
                 </div>
             @endif
-            <h1 class="font-hairline mb-6 text-center">Register to our Website</h1>
+            <h1 class="font-hairline mb-6 text-center">Ajout d'une Ligue</h1>
             <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
                 <form action="/CreateLigue" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     <input type="hidden" name="_token" value="{{csrf_token()}}">

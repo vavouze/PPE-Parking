@@ -15,7 +15,7 @@ class utilisateur extends Model
      *
      * @var string
      */
-    protected $table = 'utilisateur';
+    protected $table = 'users';
 
 
     /**
