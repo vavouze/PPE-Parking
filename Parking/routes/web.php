@@ -75,12 +75,10 @@ Route::get('/showPlace', 'listeplaceController@show')-> middleware('LogAuth');
 Route::post('/login','loginController@login');
 
 
-/*
+
 Route::get('/','ListeAttenteController@CheckPlace');
-*/
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
 
 
 Route::post('/inscription','RegisterController@register');
@@ -119,6 +117,8 @@ Route::get('/listedattentes', function () {
 Route::get('/listeattente', 'listeAttenteController@Showlisteattente');
 
 Route::get('/ListeLigue', 'LigueController@ShowListeLigue');
+
+Route::get('//deleteligue/{numligue}', 'LigueController@DeleteLigue');
 
 Route::get('/suplisteattente/{id}', 'listeAttenteController@destroylisteattente');
 

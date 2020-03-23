@@ -3,7 +3,10 @@
 
 namespace App\Http\Controllers;
 use App\ListeAttente;
+use App\Place;
+use App\Reservation;
 use App\utilisateur;
+use Hamcrest\Util;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -110,14 +113,10 @@ class ListeAttenteController extends BaseController
 
     public function CheckPlace(Request $req){
 
-        $FirstListeAttente = DB::table('listeattente')
-            ->select('IDpersonne')
-            ->where('Rang','=',1)
-            ->get();
 
-        $PlaceDisp = DB::table('place')
-            ->select ('Numplace','Etat')
-            ->where('Etat',0)
+        $FirstListeAttente = utilisateur::where('Rang',1)->get();
+
+        $PlaceDisp = Place::where('Etat',0)
             ->get();
 
         $array = [];
@@ -133,6 +132,7 @@ class ListeAttenteController extends BaseController
             if (!empty($array)) {
 
                 $Date_debut = date('Y-m-d');
+                $Date_Fin = date('Y-m-d ', strtotime($Date_debut . ' +7 day'));
                 $id = $FirstListeAttente[0]->IDpersonne;
 
                 $arr = [];
@@ -141,18 +141,24 @@ class ListeAttenteController extends BaseController
                 }
 
                 $randomind = array_rand($arr);
-                $randomPlace = $arr[$randomind]->Numplace;
-                DB::table('reservation')->insert(
-                    ['DateReservation' => $Date_debut, 'DateExpiration' => '2010-10-10', 'NumPlace' => $randomPlace, 'IDpersonne' => $id, 'Fin  ' => 'n']
-                );
 
-                DB::table('place')
-                    ->where('NumPlace', $randomPlace)
+                $randomPlace = $arr[$randomind]->NumPlace;
+
+                $newReservation = new Reservation();
+                $newReservation->DateReservation = $Date_debut;
+                $newReservation->DateExpiration = $Date_Fin;
+                $newReservation->NumPlace = $randomPlace;
+                $newReservation->IDpersonne = $id;
+                $newReservation->Fin = 'n';
+                $newReservation->save();
+
+                Place::where('NumPlace', $randomPlace)
                     ->update(['etat' => 1]);
 
-                DB::table('listeattente')
-                    ->where(['IDpersonne' => $id])
-                    ->delete();
+                $nullList = utilisateur::find($id);
+                $nullList->Rang = null;
+                $nullList->save();
+
             }
 
         }
