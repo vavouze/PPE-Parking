@@ -108,32 +108,32 @@ class UserController extends BaseController
       $mdp= $req->input('mdp');
       $Cmdp= $req->input('Cmdp');
       $info = utilisateur::where('IDpersonne',$id)->get();
-
       if($mdp==$Cmdp)
       {
         $hashmdp = password_hash($mdp, PASSWORD_DEFAULT);
         $savemdp = utilisateur::find($id);
         $savemdp->MotDePasse = $hashmdp;
         $savemdp->save();
-
         $info = utilisateur::where('IDpersonne',$id)->get();
-
         $message ="Le mot de passe de l'utilisateur ".$info[0]->Nom." ".$info[0]->Prenom." à bien été modifié !";
-
       }
       else
       {
         $message ="Il semblerait que les mots de passe soient différents !";
-
       }
-
+      if(isset($info[0]->remember_token))
+      {
+        $updatetoken = utilisateur::find($id);
+        $updatetoken->remember_token = null;
+        $updatetoken->save();
+        $message = "Votre mot de passe à bien été modifié !";
+        return view('tokenmdp')
+                ->with('message', $message);
+      }
       if (session('id') === 'ADMIN')
           return redirect()->action('UserController@showInfo', ['id' => $id ,'message'=>$message]);
       else
           return redirect()->action('PlaceController@numPlace', ['id' => $id,'message'=>$message]);
-
-
-
     }
 
     //supprimer un utilisateur

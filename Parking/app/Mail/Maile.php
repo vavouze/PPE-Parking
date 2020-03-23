@@ -32,13 +32,15 @@ class Maile extends Mailable
      */
     public function build(Request $req)
     {
+      $email = $req->input('mail');
+      $Existemail = utilisateur::select('Nom', 'Prenom', 'IDpersonne')->where('Mail', $email)->get();
       $recup_code = "";
       for ($i=0; $i < 8; $i++){
           $recup_code .= mt_rand(0,9);
       }
-      $email = $req->input('mail');
-      $Existemail = utilisateur::select('Nom', 'Prenom', 'IDPersonne')->where('Mail', $email)->get();
-
+      $savetoken = utilisateur::find($Existemail[0]->IDpersonne);
+      $savetoken->remember_token = $recup_code;
+      $savetoken->save();
         return $this->from('Parking@M2L.com', 'Parking2.1')
           ->subject('Mot de passe oublié')
           ->markdown('mail')

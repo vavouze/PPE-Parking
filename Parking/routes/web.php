@@ -28,11 +28,16 @@ Route::post('/send-mail', function (Request $req) {
     else
     {
       Mail::to($email)->send(new Maile());
-      return view('Motdepasseoublie');
+      $message ="Un email vient de vous être envoyé !";
+      return view('tokenmdp')
+              ->with('message', $message)
+              ->with('user', $Existemail);
     }
 });
 
-
+Route::get('/tokenmdp', function () {
+    return view('tokenmdp');
+});
 
 Route::get('/accueil', function () {
     return view('accueil');
@@ -141,4 +146,4 @@ Route::post('/Cancelreservation/{id}', 'CancelReservationController@CancelReserv
 
 Route::get('/ListeAttente/{id}', 'ListeAttenteController@InsertListeAttente');
 
-Route::post('/mdp', 'MotdepasseoublieController@Motdepasseoublie');
+Route::post('/mdp/{id}', 'MotdepasseoublieController@Motdepasseoublie');
