@@ -20,7 +20,7 @@ $valeur = session('id');
   <div class="w-1/3 mx-auto">
     <h1 class="font-hairline mb-6 text-center">Insérer votre adresse mail</h1>
     <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
-      <form  action="/mdp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
+      <form  action="/send-mail" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full px-3">
