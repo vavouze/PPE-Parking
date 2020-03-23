@@ -11,15 +11,25 @@
 |
 */
 use App\Mail\Maile;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+use App\utilisateur;
 
 Route::post('/send-mail', function (Request $req) {
-
-    Mail::to($email = $req->input('mail'))->send(new Maile());
-
-    return 'A message has been sent to Mailtrap!';
-
+    $email = $req->input('mail');
+    $Existemail = utilisateur::where('Mail', $email)->get();
+    if(Empty($Existemail[0]->Nom))
+    {
+      $message = "Cet adresse e-mail est inconnu du système veuillez saisir une adressae e-mail valide";
+      return view('Motdepasseoublie')
+              ->with('email', $email)
+              ->with('message', $message);
+    }
+    else
+    {
+      Mail::to($email)->send(new Maile());
+      return view('Motdepasseoublie');
+    }
 });
 
 
