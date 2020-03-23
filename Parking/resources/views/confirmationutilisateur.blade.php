@@ -29,8 +29,15 @@ $valeur = session('id');
                 <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Prenom ?? ''}}</td>
                 <td class="py-4 px-6 border-b border-grey-light text-center"> {{$d->Tel ?? ''}}</td>
                 @php  $lien = $d->IDpersonne; @endphp
-                <td class="py-4 px-6 border-b border-grey-light text-center"> <button onclick="location.href='{{url('/useraccepte', $d->IDpersonne)}}'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Accepter</button>
-                 <button  class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded" onclick="location.href='{{url('refuser', $d->IDpersonne)}}'" >Refuser</button></td>
+                <td class="py-4 px-6 border-b border-grey-light text-center">
+
+                    <span style="color: dodgerblue;"><a href='{{url('/useraccepte', $d->IDpersonne)}}'><i class="fas fa-check fa-lg mr-8"></i></a></span>
+                    <span style="color: red;"><a href='{{url('refuser', $d->IDpersonne)}}'><i class="fas fa-times-circle fa-lg"></i></a></span>
+
+
+                </td>
+
+
             </tr>
             @endforeach
           </tbody>

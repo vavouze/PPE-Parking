@@ -63,4 +63,4 @@ $valeur = session('id');
 
 
 
-@stop
+@endsection

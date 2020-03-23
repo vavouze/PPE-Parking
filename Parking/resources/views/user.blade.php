@@ -102,7 +102,7 @@ $valeur = session('id');
     <div class="w-1/3 mx-auto" style="
     position: relative;
     bottom: 25%;
-    right: 20%;">
+    left: -41%;">
         <h1 class="font-hairline mb-6 text-center">Modification du mot de passe</h1>
         <div class="rounded-lg shadow-lg border-t-8 border-blue-200">
             <form  action="/modifmdp/@php echo$valeur@endphp" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-lg">
@@ -138,7 +138,9 @@ $valeur = session('id');
 
 
     @if(count($ListePlace)>0)
-        <div class="w-1/2 mx-auto" >
+        <div class="w-1/2 mx-auto" style="position: absolute;
+        left: 55%;
+    max-width: 40%;" >
             @if(!empty($message))
                 <div class="rounded-lg shadow-lg border-t-8 border-red-400 mb-16 ">
                     <h1 class="font-hairline text-red-600 font-bold mb-8 mr-4 ml-4 text-center">{{$message ?? ''}}</h1>
