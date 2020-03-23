@@ -10,7 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Mail\Maile;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
+Route::post('/send-mail', function (Request $req) {
+
+    Mail::to($email = $req->input('mail'))->send(new Maile());
+
+    return 'A message has been sent to Mailtrap!';
+
+});
 
 
 
