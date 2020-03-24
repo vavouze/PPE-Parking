@@ -40,13 +40,11 @@ class LigueController extends Controller
         else
             $message = "";
 
-
         return view('ListLigue')
             ->with('ligues', $ligues)
             ->with('message', $message);
-
-
     }
+
     public function delete()
     {
         $numP = $_GET['numP'];
@@ -55,7 +53,6 @@ class LigueController extends Controller
             ->delete();
         Place::where('NumPlace', $numP)
             ->delete();
-
 
         return redirect('place');
     }
@@ -70,7 +67,6 @@ class LigueController extends Controller
         $reservations = Reservation::where('NumPlace', $numP)
             -> get();
 
-
         if ($place->Etat == 0)
             $place->Etat = 'libre';
         else
@@ -82,7 +78,6 @@ class LigueController extends Controller
             $reservation->IDpersonne = $personne;
         }
 
-
         return view('showPlace')
             ->with('place', $place)
             ->with('reservations', $reservations);
@@ -93,11 +88,8 @@ class LigueController extends Controller
         $numligue = $req->input('NumLigue');
         $ligues = Ligue::all();
 
-
-
         if($numligue === NULL)
         {
-
             $message = 'Tous les champs sont requis';
             return redirect()->action('LigueController@ShowListeLigue', ['message'=>$message]);
         }
@@ -112,20 +104,15 @@ class LigueController extends Controller
                 }
 
             }
-
             $newLigue = new Ligue();
-
             $newLigue->NumLigue = $req->input('NumLigue');
             $newLigue->AdresseRue = $req->input('adresse');
             $newLigue->CP = $req->input('cp');
             $newLigue->Ville = $req->input('ville');
             $newLigue->Nom = $req->input('Nom');
-
             $newLigue->save();
 
             return redirect('/ListeLigue');
         }
-
-
     }
 }

@@ -18,18 +18,13 @@ class RegisterController extends BaseController
     public function register(Request $req)
     {
         $data= $req->input();
-
         $existUser = utilisateur::where('IDpersonne','=',$data['id'])->get();
-
-
-
         if (isset($existUser[0])){
             $message ="Ce nom d'utilisateur n'est pas disponible";
             return view('subscription')
                 ->with('message',$message);
         }
         $existMail = utilisateur::where('Mail','=',$data['mail'])->get();
-
         if (isset($existMail[0])){
             $message =" Cette adresse mail n'est pas disponible";
             return view('subscription')
@@ -37,13 +32,9 @@ class RegisterController extends BaseController
         }
         else
         {
-
         $passwordhash = password_hash($data['motdepasse'], PASSWORD_DEFAULT);
-
-
         $newUtilisateur = new utilisateur();
         $idLigue = Ligue::where('Nom', $data['ligue'])->get();
-
 
         $newUtilisateur->IDpersonne = $data['id'];
         $newUtilisateur->MotDePasse = $passwordhash;
@@ -56,16 +47,10 @@ class RegisterController extends BaseController
         $newUtilisateur->Mail = $data['mail'];
         $newUtilisateur->Etat = 0;
         $newUtilisateur->idLigue = $idLigue[0]->NumLigue;
-
-
         $newUtilisateur->save();
-
         $messageInscrip = "Votre demande d'inscription est en cours de traitement";
-
         return view('welcome')
             ->with('message', $messageInscrip);
-    }
-
-
+        }
     }
 }

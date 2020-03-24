@@ -15,7 +15,6 @@ class ConfirmuserController extends BaseController
   //afficher tout les utilisateurs
     public function showUser(Request $req)
     {
-
         $data = utilisateur::where('Etat', 0)
                           ->OrderBy('Nom')
                           ->get();
@@ -27,11 +26,9 @@ class ConfirmuserController extends BaseController
         else
         {
             $message = "Il n'y a aucun nouveaux utilisateur(s) à confirmer !";
-
             return view('Confirmationutilisateur')
                   ->with('message', $message);
         }
-
     }
 
     //modifier les infos de l'utilisateur
@@ -40,7 +37,6 @@ class ConfirmuserController extends BaseController
         $etat = utilisateur::find($id);
         $etat->Etat = 1;
         $etat->save();
-
         return redirect('confirmuser');
     }
 
@@ -49,11 +45,8 @@ class ConfirmuserController extends BaseController
     {
       $info = utilisateur::where(['IDpersonne' => $id])
                 ->get();
-
       $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été supprimé";
-
       utilisateur::find($id)->delete();
-
       return redirect('confirmuser');
     }
 }

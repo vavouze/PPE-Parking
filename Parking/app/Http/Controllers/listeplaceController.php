@@ -13,7 +13,6 @@ use App\Utilisateur;
 
 class listeplaceController extends Controller
 {
-
     public function place()
     {
         $places = Place::all();
@@ -30,12 +29,9 @@ class listeplaceController extends Controller
             else
                 $place->Etat = 'occupée';
         }
-
-
         return view('listeplace')
             ->with('places', $places)
             ->with('message', $message);
-
 
     }
     public function delete()
@@ -46,21 +42,17 @@ class listeplaceController extends Controller
             ->delete();
         Place::where('NumPlace', $numP)
             ->delete();
-
-
         return redirect('place');
     }
 
     public function show()
     {
         $numP = $_GET['numP'];
-
         $place = Place::where('NumPlace', $numP)
             -> first();
 
         $reservations = Reservation::where('NumPlace', $numP)
             -> get();
-
 
         if ($place->Etat == 0)
             $place->Etat = 'libre';
@@ -72,8 +64,6 @@ class listeplaceController extends Controller
             $personne= Utilisateur::where('IDpersonne',$reservation->IDpersonne)-> value('Nom');
             $reservation->IDpersonne = $personne;
         }
-
-
         return view('showPlace')
             ->with('place', $place)
             ->with('reservations', $reservations);
@@ -84,11 +74,8 @@ class listeplaceController extends Controller
         $numPlace = $req->input('NumPlace');
         $places = Place::all();
 
-
-
         if($numPlace === NULL)
         {
-
             $message = 'Tous les champs sont requis';
             return redirect()->action('listeplaceController@place', ['message'=>$message]);
         }
@@ -101,16 +88,11 @@ class listeplaceController extends Controller
                     $message = 'La place numero '.$place->NumPlace.' existe déjà';
                     return redirect()->action('listeplaceController@place', ['message'=>$message]);;
                 }
-
             }
-
             Place::insert(
                 ['numPlace'=>$numPlace,'Etat'=> 0]
             );
-
             return redirect('place');
         }
-
-
     }
 }
