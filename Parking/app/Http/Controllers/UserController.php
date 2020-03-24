@@ -127,7 +127,7 @@ class UserController extends BaseController
         $updatetoken->remember_token = null;
         $updatetoken->save();
         $message = "Votre mot de passe à bien été modifié !";
-        return view('tokenmdp')
+        return view('welcome')
                 ->with('message', $message);
       }
       if (session('id') === 'ADMIN')

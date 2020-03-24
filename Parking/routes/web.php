@@ -35,6 +35,12 @@ Route::post('/send-mail', function (Request $req) {
     }
 });
 
+
+
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/tokenmdp', function () {
     return view('tokenmdp');
 });

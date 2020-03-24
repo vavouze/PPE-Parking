@@ -27,8 +27,11 @@ class MotdepasseoublieController extends BaseController
         }
         else
         {
+            $id = utilisateur::where('IDpersonne',$id)->get();
+            $message = 'Token invalide';
             return view('tokenmdp')
-                  ->with('user', $testtoken);
+                  ->with('user',$id)
+                  ->with('message',$message);
         }
     }
 

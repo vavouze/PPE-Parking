@@ -44,7 +44,7 @@ $valeur = session('id');
 
                 <div class="flex items-center justify-between">
                     <input type='submit' value='Valider' name='reservation' id='submit' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    <button class="modal-close px-3 bg-indigo-500 p-2 rounded-lg text-white hover:bg-indigo-400">Annuler</button>
+                    <input value='Annuler'  alt="Annuler" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="max-width:95px" onclick="toggleModal()">
                 </div>
             </form>
 

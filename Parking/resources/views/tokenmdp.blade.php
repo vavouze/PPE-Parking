@@ -7,11 +7,6 @@
 $valeur = session('id');
 @endphp
 <p class="text-2xl font-bold text-blue-400 text-center">{{$message ?? ''}}</p>
-@if(empty($user[0]->IDpersonne))
-  <div class="text-center">
-  <button onclick="location.href='/'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Se connecter</button>
-</div>
-@else
 <div class="container mx-auto h-full flex justify-center items-center">
   <div class="w-1/3 mx-auto">
     <h1 class="font-hairline mb-6 text-center">Entrez le code de vérification</h1>
@@ -33,5 +28,5 @@ $valeur = session('id');
     </div>
   </div>
 </div>
-@endif
+
 @stop

@@ -56,12 +56,12 @@ $valeur = session('id');
         <h1 class="font-hairline mb-6 text-center">Vos Informations de réservation</h1>
         <div class="bg-white rounded-lg shadow-lg border-t-8 border-blue-200">
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-1 py-5 px-3">
+                <div class="mb-10 mt-8 mr-5 ml-4 md:flex justify-between items-center text-center">
+                    <label class="bg-white border-2 border-black  text-black font-bold py-2 px-4  rounded">
                         @php echo $Name->Nom."  ".$Name->Prenom;@endphp
                     </label>
                     @if (isset($numPlace[0]->NumPlace))
-                    <label class="block text-gray-700 text-sm font-bold mb-1  py-5 px-3">
+                    <label class="bg-white border-2 border-blue-500 text-blue-500 font-bold py-2 px-4 rounded">
 
 
                             @php
@@ -74,7 +74,7 @@ $valeur = session('id');
                     @endif
                 </div>
                 <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-1 py+5 px-3 ">
+                    <label class="font-hairline font-bold mb-6 text-center ">
 
                         @if (isset($numPlace[0]->NumPlace))
 
