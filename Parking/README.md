@@ -2,7 +2,9 @@
 
 ## Procédure d'installation du projet
 
-Après avoir créé un repository local il faut pour aller sur la branche où se trouve le projet :
+Après avoir créé un repository local 
+
+Il faut pour aller sur la branche où se trouve le projet :
 - Git checkout admin
 
 Pour mettre à jour repository local du projet :
