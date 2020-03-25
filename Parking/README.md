@@ -13,6 +13,6 @@ Pour mettre à jour repository local du projet :
 Ensuite pour mettre à jour la base de données il faut faire : 
 - php artisan migrate:fresh --seed
 
-
+Une fois sur l'application web le mot de passe attribué à tout utilisateur est "113".
 
 
