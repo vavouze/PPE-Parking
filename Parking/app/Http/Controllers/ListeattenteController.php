@@ -72,14 +72,22 @@ class ListeAttenteController extends BaseController
         $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été retiré de la liste d'attente !";
 
         $SupListe = utilisateur::find($id);
+        $Rang = $SupListe->Rang;
         $SupListe->Rang = null;
         $SupListe->save();
+
+        $RangSup = utilisateur::where('Rang','>',$Rang)->get();
+        foreach ($RangSup as $key){
+            utilisateur::where('IDpersonne',$key->IDpersonne)->update(['Rang' => $key->Rang -1]);
+        }
 
         $liste = utilisateur::where('Rang','!=',null)
             ->orderBy('Rang')
             ->get();
+
         return view('ListeAttente')
             ->with('listeattente', $liste)
+            ->with('id',0)
             ->with('message', $message);
     }
 
@@ -116,6 +124,7 @@ class ListeAttenteController extends BaseController
 
         $FirstListeAttente = utilisateur::where('Rang',1)->get();
 
+
         $PlaceDisp = Place::where('Etat',0)
             ->get();
 
@@ -127,6 +136,7 @@ class ListeAttenteController extends BaseController
 
 
         if(count($PlaceDisp)>0){
+
 
 
             if (!empty($array)) {
@@ -158,6 +168,13 @@ class ListeAttenteController extends BaseController
                 $nullList = utilisateur::find($id);
                 $nullList->Rang = null;
                 $nullList->save();
+
+                $allUser = utilisateur::where('Rang','!=',null)->get();
+                foreach ( $allUser as $key){
+                    utilisateur::where('IDpersonne',$key->IDpersonne)->update(['Rang' => $key->Rang -1]);
+                }
+
+
 
             }
 

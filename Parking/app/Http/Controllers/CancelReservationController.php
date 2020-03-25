@@ -28,8 +28,14 @@ class CancelReservationController extends BaseController
 
 
             $Liste = utilisateur::find($id);
+            $Rang = $Liste->Rang;
             $Liste->Rang = null;
             $Liste->save();
+
+            $RangSup = utilisateur::where('Rang','>',$Rang)->get();
+            foreach ($RangSup as $key){
+                utilisateur::where('IDpersonne',$key->IDpersonne)->update(['Rang' => $key->Rang -1]);
+            }
 
         }
         else

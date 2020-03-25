@@ -144,7 +144,13 @@ class UserController extends BaseController
       $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été supprimé";
 
       reservation::where('IDpersonne', $id)->delete();
+      $User = utilisateur::find($id);
       utilisateur::find($id)->delete();
+
+      $RangSup = utilisateur::where('Rang','>',$User->Rang)->get();
+      foreach ($RangSup as $key){
+          utilisateur::where('IDpersonne',$key->IDpersonne)->update(['Rang' => $key->Rang -1]);
+      }
 
       $data = utilisateur::orderBy('Nom')->get();
       return view('allUtilisateur')
