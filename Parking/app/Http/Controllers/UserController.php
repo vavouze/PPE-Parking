@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
 use App\ListeAttente;
 use App\Reservation;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -11,45 +10,32 @@ use Illuminate\Routing\Controller as BaseController;
 use App\utilisateur;
 
 
-
 class UserController extends BaseController
 {
   //afficher tout les utilisateurs
     public function showUser(Request $req)
     {
-
-           $data = utilisateur::OrderBy('Nom')->get();
-
-
-
+       $data = utilisateur::OrderBy('Nom')->get();
        return view('allUtilisateur')
         ->with('data', $data);
     }
+
     //afficher les info perso d'un seul utilisateur
-
-
     public function showInfo(Request $req, $id)
     {
-        $info = utilisateur::where(['IDpersonne' => $id])
-                  ->get();
-
+        $info = utilisateur::where(['IDpersonne' => $id])->get();
         if (!empty($_GET['message']))
             $message = $_GET['message'];
         else
             $message = "";
-
         if(isset($info[0]->IDpersonne))
         {
             $PlaceActuelle = Reservation::where('IDpersonne', $id)
                 ->where('Fin', 'n')
                 ->get();
             $NameUtil = utilisateur::find($id);
-
-
             $temp = 0;
-
             $ListeAttente = utilisateur::where('IDpersonne', $id)->get();
-
             if ($ListeAttente[0]->Rang != null){
                 $temp = 1;
             }
@@ -67,14 +53,11 @@ class UserController extends BaseController
           return view('infoUtilisateur')
                     ->with('message', $message);
         }
-
     }
     //modifier les infos de l'utilisateur
     public function modifyInfoPerso(Request $req, $id)
     {
           $info = $req->input();
-
-
           utilisateur::where('IDpersonne', $id)
                   ->update(['Nom'=> $info['nom'],
                             'Prenom'=> $info['prenom'],
@@ -84,24 +67,14 @@ class UserController extends BaseController
                             'Ville'=> $info['ville'],
                             'Mail'=> $info['mail']
                             ]);
-
-
-
         $message ="l'utilisateur ".$info['nom']." ".$info['prenom']." à bien été modifié !";
-
-
-
         $info = utilisateur::where('IDpersonne',$id)->get();
-
         /*return view('infoUtilisateur')
           ->with('message', $message)
           ->with('info', $info);*/
-
         return redirect()->action('UserController@showInfo', ['id' => $id ,'message'=>$message]);
-
-
-
     }
+
     //modifier le mot de passe
     public function modifyMDP(Request $req, $id)
     {
@@ -121,6 +94,7 @@ class UserController extends BaseController
       {
         $message ="Il semblerait que les mots de passe soient différents !";
       }
+      //pour la fonction mot de passe oublié
       if(isset($info[0]->remember_token))
       {
         $updatetoken = utilisateur::find($id);
@@ -136,11 +110,11 @@ class UserController extends BaseController
           return redirect()->action('PlaceController@numPlace', ['id' => $id,'message'=>$message]);
     }
 
-    //supprimer un utilisateur
+    //supprimer un utilisateur avec son IDpersonne
     public function destroyinfo($id)
     {
-      $info = utilisateur::where(['IDpersonne' => $id])
-                ->get();
+      $info = utilisateur::where(['IDpersonne' => $id])->get();
+
       $message = "L'utilisateur ".$info[0]->Prenom." ".$info[0]->Nom." a bien été supprimé";
 
       reservation::where('IDpersonne', $id)->delete();
@@ -153,6 +127,7 @@ class UserController extends BaseController
       }
 
       $data = utilisateur::orderBy('Nom')->get();
+
       return view('allUtilisateur')
        ->with('data', $data)
        ->with('message', $message);

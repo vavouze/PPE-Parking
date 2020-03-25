@@ -16,10 +16,7 @@ class loginController extends BaseController
     public function login(Request $req)
     {
       $username= $req->input('id');
-
-
       $checkLogin = admin::where(['IDAdmin'=>$username])->get();
-
 
       if (count($checkLogin) > 0) {
         $hash = $checkLogin[0]->MotDePasse;
@@ -37,7 +34,6 @@ class loginController extends BaseController
         else
         {
             $messageLog = "Les données saisies sont invalides";
-
             return view('welcome')
               ->with('message',$messageLog);
         }
@@ -48,10 +44,8 @@ class loginController extends BaseController
             ->with('name');
       }
       else
-
           $messageLog = "Mot de passe incorrect";
           return view('welcome')
               ->with('message',$messageLog);
-
     }
 }
